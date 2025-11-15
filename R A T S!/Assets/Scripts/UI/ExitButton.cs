@@ -11,16 +11,15 @@ public class ExitButton : GenericMenuButton
     private Coroutine pointerEnterCoroutine;
     private Coroutine pointerExitCoroutine;
 
-    [SerializeField] const float scaleUpSize = 1.3f;
-    [SerializeField] const float rippleEffectDistance = 15f;
-    [SerializeField] const float animationDuration = 0.35f;
+    const float scaleUpSize = 1.3f;
+    const float rippleEffectDistance = 15f;
+    const float animationDuration = 0.35f;
 
     GenericMenuButton[] menuButtons;
 
     void Start()
     {
         SetOriginalPosition();
-        SetTargetPos(rippleEffectDistance);
         menuButtons = FindObjectsByType<GenericMenuButton>(FindObjectsSortMode.None);
     }
 
@@ -39,7 +38,7 @@ public class ExitButton : GenericMenuButton
             DOTween.Kill(b);
         }
 
-        button.image.rectTransform.DOScale(new Vector2(scaleUpSize, scaleUpSize), animationDuration).SetEase(Ease.OutBack);
+        button.image.rectTransform.DOScale(scaleUpSize, animationDuration).SetEase(Ease.OutBack);
 
         foreach (Button b in FindObjectsByType<Button>(FindObjectsSortMode.None))
         {
@@ -55,13 +54,16 @@ public class ExitButton : GenericMenuButton
 
     public override void OnPointerExit()
     {
+        if (!isInteractable)
+            return;
+
         foreach (Button b in FindObjectsByType<Button>(FindObjectsSortMode.None))
         {
             DOTween.Kill(b);
         }
 
         button.image.rectTransform
-            .DOScale(Vector2.one, animationDuration)
+            .DOScale(1, animationDuration)
             .SetEase(Ease.OutBack);
 
         GenericMenuButton[] menuButtons = FindObjectsByType<GenericMenuButton>(FindObjectsSortMode.None);
@@ -75,12 +77,19 @@ public class ExitButton : GenericMenuButton
             if (btn == null)
                 continue;
 
-            btn.image.rectTransform
-                .DOAnchorPosY(genBtn.GetOriginalPos().y, animationDuration)
-                .SetEase(Ease.OutBack);
+            genBtn.TweenToOriginalPosition();
         }
     }
 
+    public override void TweenToOriginalPosition()
+    {
+        button.image.rectTransform
+            .DOAnchorPos(GetOriginalPos(), animationDuration)
+            .SetEase(Ease.OutBack);
+
+        button.image.rectTransform.DORotate(Vector3.zero, animationDuration);
+        button.image.DOFade(1, animationDuration);
+    }
 
     public override void DisableButtonInteractions()
     {
