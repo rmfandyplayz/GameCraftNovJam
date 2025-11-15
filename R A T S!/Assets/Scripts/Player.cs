@@ -235,7 +235,7 @@ public class Player : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         // --- Picking up Object
-        if (collision.CompareTag("Item") && !holdingItem && !throwing)
+        if (collision.CompareTag("Item") && !holdingItem)
         {
             isCollidingWithObject = false;
         }
