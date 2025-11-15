@@ -7160,6 +7160,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5561518875442126796, guid: de32ce8c4daf34519993462629accb4e, type: 3}
+      propertyPath: m_NormalMapQuality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561518875442126796, guid: de32ce8c4daf34519993462629accb4e, type: 3}
+      propertyPath: m_LightVolumeEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6701792183889330156, guid: de32ce8c4daf34519993462629accb4e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.6530657
