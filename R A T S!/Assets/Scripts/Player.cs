@@ -45,10 +45,21 @@ public class Player : MonoBehaviour
     private Vector2 movementInput;
     private Vector2 faceDir;
 
+    [Header("Dash Ghost")]
+    public Sprite ghostSprite;           // sprite to use for ghosts
+    public Color ghostColor = new Color(1f, 1f, 0f, 0.6f); // yellow & transparent
+    public float ghostLifetime = 0.25f;  
+    public float ghostInterval = 0.03f;  
+
+    private float ghostTimer = 0f;
+    private SpriteRenderer playerSR;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        playerSR = GetComponent<SpriteRenderer>();
         hand = transform.GetChild(0);
         broomRenderer = GameObject.FindGameObjectWithTag("Item").transform.parent.GetComponent<SpriteRenderer>();
 
@@ -143,6 +154,22 @@ public class Player : MonoBehaviour
         }
 
         // --- Throwing Objects ---
+
+
+
+        if (dashing)
+        {
+            ghostTimer += Time.deltaTime;
+        if (ghostTimer >= ghostInterval)
+        {
+            ghostTimer = 0f;
+            SpawnGhost();
+        }
+    }
+    else
+    {
+        ghostTimer = 0f; // reset when dash ends
+    }
     }
 
     public void GrabThrow()
@@ -199,5 +226,24 @@ public class Player : MonoBehaviour
         Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
         heldRB.simulated = false;
     }
+
+    private void SpawnGhost()
+    {
+        GameObject g = new GameObject("DashGhost");
+        g.transform.position = transform.position;
+        g.transform.rotation = transform.rotation;
+
+        SpriteRenderer sr = g.AddComponent<SpriteRenderer>();
+        sr.sprite = ghostSprite != null ? ghostSprite : playerSR.sprite;
+        sr.flipX = playerSR.flipX;
+        sr.flipY = playerSR.flipY;
+        sr.sortingLayerID = playerSR.sortingLayerID;
+        sr.sortingOrder = playerSR.sortingOrder - 1;
+
+        sr.color = ghostColor;
+
+        Destroy(g, ghostLifetime);
+    }
+
 }
 
