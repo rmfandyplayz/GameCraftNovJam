@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldObject: {fileID: 0}
   collidedObject: {fileID: 0}
-  force: 5
+  force: 10
   dashMultiplier: 3
   maxLight: 100
   lightLeft: 0

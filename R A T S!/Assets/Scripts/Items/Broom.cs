@@ -33,6 +33,8 @@ public class Broom : GrabbableBase
 
     public override void Use(Player player)
     {
+        if (attacking)
+            return;
         animator.SetInteger("FaceDIr", player.GetFacingIndex());
         animator.SetTrigger("Swing");
         attackTimer = attackTime;
