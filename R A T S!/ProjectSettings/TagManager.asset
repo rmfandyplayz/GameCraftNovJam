@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Broom
+  - Spawn Point
   layers:
   - Default
   - TransparentFX
