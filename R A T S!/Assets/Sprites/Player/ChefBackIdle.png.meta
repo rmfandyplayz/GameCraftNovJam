@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 373f4badb68cf4118b1085d3e9bc2391
+guid: aa0a082e6aa9d439da97dee8e2f743a6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3283973408602087131
-    second: bigBlack_0
+      213: 3433690434763426518
+    second: ChefBackIdle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,23 +113,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bigBlack_0
+      name: ChefBackIdle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 9
+        y: 33
+        width: 17
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bde5e877a64039d20800000000000000
-      internalID: 3283973408602087131
+      spriteID: 6da0bb8024be6af20800000000000000
+      internalID: 3433690434763426518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChefBackIdle_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f4ffa62e90d41b5be9cbfa9cf4ee67
+      internalID: 659428259
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 58f5e2c4ab53b48078585e24d952cdd3
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bigBlack_0: 3283973408602087131
+      ChefBackIdle_0: 3433690434763426518
+      ChefBackIdle_1: 659428259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
