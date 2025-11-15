@@ -1,61 +1,80 @@
-using System.Data.Common;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Vector2 = UnityEngine.Vector2;
 
 public class Player : MonoBehaviour
 {
     // --- Internals ---
-    private Rigidbody2D rb;
-    private BoxCollider2D collider;
+    [Header("Components")]
     public Transform heldObject;
-    private Transform player;
+    private Rigidbody2D rb;
     public Transform collidedObject;
     private Animator animator;
     private SpriteRenderer broomRenderer;
+    private LightController lightController;
     
     // --- Movement Variables ---
+    [Header("Movement")]
     public float force;
-    private bool dashing = false;
-    private bool dashOnCooldown = false;
+    private bool dashing;
+    private bool dashOnCooldown;
+    public float dashMultiplier = 3;
     private Transform hand;
+    
+    // HP
+    [Header("Light")]
+    public float maxLight = 100;
+    [HideInInspector] public float lightLeft;
+    [SerializeField] private float lightDecayPerSecond = 1;
+    
 
     // --- Held Item Variables ---
-    private bool holdingItem = true;
-    private bool throwing = false;
+    [Header("Held Items")]
     public float throwSpeed;
-    private bool locked = false;
-    private bool targetUp = false;
-    private bool targetRight = false;
-    private bool targetLeft = false;
-    private bool targetDown = false;
-    // --- Sprite Variables ---
-    private bool facingUp = true;
-    private bool facingRight = false;
-    private bool facingLeft = false;
-    private bool facingDown = false;
+    private bool holdingItem => heldObject != null;
 
+    [Header("Timers")]
     // --- Timers ---
-    private float dashTimer = 0;
     public float dashTime;
+    private float dashTimer;
     public float dashCooldownTime;
-    private float throwTimer;
-    public float throwTime;
     public float pickupCooldown;
 
-    private bool isCollidingWithObject = false;
+    private bool isCollidingWithObject;
+
+    private Vector2 movementInput;
+    private Vector2 faceDir;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
-        player = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         hand = transform.GetChild(0);
-        broomRenderer = GameObject.FindGameObjectWithTag("Broom").GetComponent<SpriteRenderer>();
+        broomRenderer = GameObject.FindGameObjectWithTag("Item").transform.parent.GetComponent<SpriteRenderer>();
+
+        lightLeft = maxLight;
+        lightController = transform.Find("DisapperingLight").GetComponent<LightController>();
+    }
+
+    public void Damage(float amount)
+    {
+        lightLeft -= amount;
+    }
+    
+    public void Dash()
+    {
+        if (dashOnCooldown)
+            return;
+        dashing = true;
+        dashOnCooldown = true;
+        rb.linearVelocity *= dashMultiplier;
+    }
+
+    public void MoveInput(InputAction.CallbackContext context)
+    {
+        movementInput = context.ReadValue<Vector2>();
+        if(movementInput.magnitude != 0)
+            faceDir = movementInput;
     }
 
     // Update is called once per frame
@@ -63,137 +82,58 @@ public class Player : MonoBehaviour
     {
 
         // --- Timers ---
-
-        dashTimer += Time.deltaTime;
-        throwTimer += Time.deltaTime;
+        
         pickupCooldown += Time.deltaTime;
 
-        // --- Dashing ---
+        lightLeft -= Time.deltaTime * lightDecayPerSecond;
+        lightController.lightAmount = 1 - (lightLeft / maxLight);
 
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && !dashOnCooldown)
-        {
-            dashing = true;
-        }
+        // --- Dashing ---
         if (dashOnCooldown)
         {
-            if (dashTimer > dashCooldownTime)
+            dashTimer += Time.deltaTime;
+            if (dashTimer > dashCooldownTime + dashTime)
             {
                 dashOnCooldown = false;
-            }
-        }
-        if (dashing)
-        {
-            if (!dashOnCooldown)
-            {
-                dashTimer = 0;
-            }
-            if ((Input.GetKey("w") || Input.GetKey("s")) && !dashOnCooldown)
-            {
-                rb.linearVelocityY *= 3.0f;
-                dashOnCooldown = true;
-            }
-            if ((Input.GetKey("a") || Input.GetKey("d")) && !dashOnCooldown)
-            {
-                rb.linearVelocityX *= 3.0f;
-                dashOnCooldown = true;
-            }
-            if (dashTimer > dashTime)
-            {
-                rb.linearVelocityX = 0;
-                rb.linearVelocityY = 0;
                 dashing = false;
+                dashTimer = 0;
             }
         }
 
         // --- Movement ---
-
-        else
+        if (!dashing)
         {
-            if (Input.GetKey("w"))
-            {
-                rb.linearVelocityY = force;
-                facingUp = true;
-                facingRight = false;
-                facingLeft = false;
-                facingDown = false;
-            }
-            if (Input.GetKey("s"))
-            {
-                rb.linearVelocityY = -force;
-                if (!Input.GetKey("w"))
-                {
-                    facingDown = true;
-                    facingUp = false;
-                    facingRight = false;
-                    facingLeft = false;
-                }
-            }
-            if (Input.GetKey("d"))
-            {
-                rb.linearVelocityX = force;
-                if (!(Input.GetKey("w") || Input.GetKey("s")))
-                {
-                    facingRight = true;
-                    facingUp = false;
-                    facingDown = false;
-                    facingLeft = false;
-                }
-            }
-            if (Input.GetKey("a"))
-            {
-                rb.linearVelocityX = -force;
-                if (!(Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("d")))
-                {
-                    facingRight = false;
-                    facingUp = false;
-                    facingDown = false;
-                    facingLeft = true;
-                }
-            }
-            if (!(Input.GetKey("w") || Input.GetKey("s")))
-            {
-                rb.linearVelocityY = 0;
-            }
-            if (!(Input.GetKey("a") || Input.GetKey("d")))
-            {
-                rb.linearVelocityX = 0;
-            }
+            rb.linearVelocity = movementInput * force;
         }
-
+        
         // --- Movement Animation Info ---
 
-        if (rb.linearVelocityX == 0 && rb.linearVelocityY == 0)
-        {
-            animator.SetBool("Moving", false);
-        }
-        else
-        {
-            animator.SetBool("Moving", true);
-        }
-        if (facingUp)
+
+        animator.SetBool("Moving", rb.linearVelocityX == 0 && rb.linearVelocityY == 0);
+        
+        if (faceDir.y > 0)
         {
             animator.SetFloat("Idle Index", 2);
             animator.SetFloat("Run Index", 0);
             broomRenderer.sortingOrder = 4;
         }
-        else if (facingDown)
+        else if (faceDir.y < 0)
         {
             animator.SetFloat("Idle Index", 1);
             animator.SetFloat("Run Index", 1);
             broomRenderer.sortingOrder = 4;
         }
-        else if (facingRight)
+        else if (faceDir.x > 0)
         {
             animator.SetFloat("Idle Index", 3);
             animator.SetFloat("Run Index", 3);
             broomRenderer.sortingOrder = 4;
         }
-        else if (facingLeft)
+        else if (faceDir.x < 0)
         {
             animator.SetFloat("Idle Index", 0);
             animator.SetFloat("Run Index", 2);
             broomRenderer.sortingOrder = 6;
-
         }
 
         // --- Holding Objects ---
@@ -203,82 +143,49 @@ public class Player : MonoBehaviour
         }
 
         // --- Throwing Objects ---
-        
-        if (holdingItem && Input.GetKey("q") && pickupCooldown > .4)
+    }
+
+    public void GrabThrow()
+    {
+        if (pickupCooldown < .4f)
         {
-            holdingItem = false;
-            throwTimer = 0;
-            throwing = true;
+            return;
         }
-        if (throwing == true)
+
+        if (holdingItem)
         {
-            if (facingUp && !locked)
-            {
-                targetUp = true;
-                locked = true;
-                
-            }
-            if (facingDown && !locked)
-            {
-                targetDown = true;
-                locked = true;
-            }
-            if (facingLeft && !locked)
-            {
-                targetLeft = true;
-                locked = true;
-            }
-            if (facingRight && !locked)
-            {
-                targetRight = true;
-                locked = true;
-            }
-            if (targetRight)
-            {
-                heldObject.position = new UnityEngine.Vector3(heldObject.position.x + throwSpeed, heldObject.position.y, heldObject.position.z);
-            }
-            if (targetLeft)
-            {
-                heldObject.position = new UnityEngine.Vector3(heldObject.position.x - throwSpeed, heldObject.position.y, heldObject.position.z);
-            }
-            if (targetUp)
-            {
-                heldObject.position = new UnityEngine.Vector3(heldObject.position.x, heldObject.position.y + throwSpeed, heldObject.position.z);
-            }
-            if (targetDown)
-            {
-                heldObject.position = new UnityEngine.Vector3(heldObject.position.x, heldObject.position.y - throwSpeed, heldObject.position.z);
-            }
-            if (throwTimer > throwTime)
-            {
-                targetUp = false;
-                targetDown = false;
-                targetLeft = false;
-                targetRight = false;
-                locked = false;
-                throwing = false;
-            }
+            Vector2 throwForce = faceDir * throwSpeed;
+            Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
+            heldRB.simulated = true;
+            Debug.Log(throwForce);
+            heldRB.AddForce(throwForce);
+            pickupCooldown = 0;
+
+            heldObject = null;
         }
-        // Picking Up Objects
-        if (Input.GetKey("q") && !holdingItem && !throwing && isCollidingWithObject)
+        else
         {
-            Pickup();
+            if (isCollidingWithObject)
+            {
+                Pickup();
+            }
         }
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    
+        void OnTriggerEnter2D(Collider2D collision)
         {
             // --- Picking up Object
-        if (collision.CompareTag("Broom") && !holdingItem && !throwing)
-        {
-            isCollidingWithObject = true;
-            collidedObject = collision.transform;
+            if (collision.CompareTag("Item") && !holdingItem)
+            {
+                isCollidingWithObject = true;
+                collidedObject = collision.transform.parent;
             }
         }
     
     void OnTriggerExit2D(Collider2D collision)
     {
         // --- Picking up Object
-        if (collision.CompareTag("Broom") && !holdingItem)
+        if (collision.CompareTag("Item") && !holdingItem)
         {
             isCollidingWithObject = false;
         }
@@ -286,9 +193,11 @@ public class Player : MonoBehaviour
     
     void Pickup()
     {
-        holdingItem = true;
         heldObject = collidedObject;
         pickupCooldown = 0;
+        
+        Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
+        heldRB.simulated = false;
     }
 }
 
