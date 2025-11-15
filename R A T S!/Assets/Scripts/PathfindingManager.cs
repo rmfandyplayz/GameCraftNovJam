@@ -39,6 +39,14 @@ public class PathfindingManager : MonoBehaviour
     {
         nodes = FindObjectsByType<PathfindingNode>(FindObjectsSortMode.None);
         PathfindTo(transform.position, transform.GetChild(0).position);
+        for (int i = 0; i < connections.Count; i++)
+        {
+            if (connections[i].dest == null || connections[i].source == null)
+            {
+                connections.RemoveAt(i);
+                i--;
+            }
+        }
     }
 
     public PathfindingNode[] GetAllNodes()

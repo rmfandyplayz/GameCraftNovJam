@@ -68,7 +68,7 @@ public class RatBase : MonoBehaviour
         rb.AddForce(distance.normalized * (accel * Time.deltaTime * rb.mass), ForceMode2D.Impulse);
         rb.linearVelocity = rb.linearVelocity.normalized * Mathf.Min(rb.linearVelocity.magnitude, maxSpeed);
         
-        animator.SetBool("MovingHoriz", Mathf.Abs(rb.linearVelocityX) > Mathf.Abs(rb.linearVelocityY));
+        animator.SetBool("IsHoriz", Mathf.Abs(rb.linearVelocityX) > Mathf.Abs(rb.linearVelocityY));
         animator.SetBool("IsMoving", rb.linearVelocity.magnitude > .01f);
         spriteRenderer.flipX = rb.linearVelocityX > 0;
 
