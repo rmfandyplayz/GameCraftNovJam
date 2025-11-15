@@ -107,4 +107,9 @@ public class RatBase : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (currentTargetedNode.transform.position - transform.position).normalized);
     }
+
+    public void TakeDamage()
+    {
+        Destroy(gameObject);
+    }
 }

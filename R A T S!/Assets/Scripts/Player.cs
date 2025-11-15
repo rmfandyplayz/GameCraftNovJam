@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     // --- Internals ---
     [Header("Components")]
-    public Transform heldObject;
+    public GrabbableBase heldObject;
     private Rigidbody2D rb;
     public Transform collidedObject;
     private Animator animator;
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     private bool isCollidingWithObject;
 
     private Vector2 movementInput;
-    private Vector2 faceDir;
+    [HideInInspector] public Vector2 faceDir;
 
     [Header("Dash Ghost")]
     public Sprite ghostSprite;           // sprite to use for ghosts
@@ -103,11 +103,14 @@ public class Player : MonoBehaviour
         if (dashOnCooldown)
         {
             dashTimer += Time.deltaTime;
-            if (dashTimer > dashCooldownTime + dashTime)
+            if (dashTimer > dashTime)
             {
-                dashOnCooldown = false;
                 dashing = false;
-                dashTimer = 0;
+                if (dashTimer > dashTime + dashCooldownTime)
+                {
+                    dashOnCooldown = false;
+                    dashTimer = 0;
+                }
             }
         }
 
@@ -121,36 +124,40 @@ public class Player : MonoBehaviour
 
 
         animator.SetBool("Moving", rb.linearVelocityX == 0 && rb.linearVelocityY == 0);
-        
-        if (faceDir.y > 0)
+
+        if (!dashing)
         {
-            animator.SetFloat("Idle Index", 2);
-            animator.SetFloat("Run Index", 0);
-            broomRenderer.sortingOrder = 4;
-        }
-        else if (faceDir.y < 0)
-        {
-            animator.SetFloat("Idle Index", 1);
-            animator.SetFloat("Run Index", 1);
-            broomRenderer.sortingOrder = 4;
-        }
-        else if (faceDir.x > 0)
-        {
-            animator.SetFloat("Idle Index", 3);
-            animator.SetFloat("Run Index", 3);
-            broomRenderer.sortingOrder = 4;
-        }
-        else if (faceDir.x < 0)
-        {
-            animator.SetFloat("Idle Index", 0);
-            animator.SetFloat("Run Index", 2);
-            broomRenderer.sortingOrder = 6;
+            if (faceDir.y > 0)
+            {
+                animator.SetFloat("Idle Index", 2);
+                animator.SetFloat("Run Index", 0);
+                broomRenderer.sortingOrder = 4;
+            }
+            else if (faceDir.y < 0)
+            {
+                animator.SetFloat("Idle Index", 1);
+                animator.SetFloat("Run Index", 1);
+                broomRenderer.sortingOrder = 4;
+            }
+            else if (faceDir.x > 0)
+            {
+                animator.SetFloat("Idle Index", 3);
+                animator.SetFloat("Run Index", 3);
+                broomRenderer.sortingOrder = 4;
+            }
+            else if (faceDir.x < 0)
+            {
+                animator.SetFloat("Idle Index", 0);
+                animator.SetFloat("Run Index", 2);
+                broomRenderer.sortingOrder = 6;
+            }
         }
 
         // --- Holding Objects ---
         if (holdingItem)
         {
-            heldObject.position = hand.position;
+            heldObject.transform.position = hand.position + Quaternion.Euler(0,0, heldObject.offsetRotation) * heldObject.offsetPos;
+            heldObject.transform.rotation = Quaternion.Euler(0,0, heldObject.offsetRotation);
         }
 
         // --- Throwing Objects ---
@@ -172,6 +179,30 @@ public class Player : MonoBehaviour
     }
     }
 
+    public int GetFacingIndex()
+    {
+        if (faceDir.y > 0)
+        {
+            return 2;
+        }
+        else if (faceDir.y < 0)
+        {
+            return 1;
+        }
+        else if (faceDir.x > 0)
+        {
+            return 3;
+        }
+        return 0;
+    }
+
+    public void UseItem(InputAction.CallbackContext context)
+    {
+        if (!context.started)
+            return;
+        heldObject?.Use(this);
+    }
+
     public void GrabThrow()
     {
         if (pickupCooldown < .4f)
@@ -183,8 +214,8 @@ public class Player : MonoBehaviour
         {
             Vector2 throwForce = faceDir * throwSpeed;
             Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
-            heldRB.simulated = true;
-            Debug.Log(throwForce);
+            heldObject.GetComponent<Collider2D>().isTrigger = false;
+            heldRB.bodyType = RigidbodyType2D.Dynamic;
             heldRB.AddForce(throwForce);
             pickupCooldown = 0;
 
@@ -220,11 +251,12 @@ public class Player : MonoBehaviour
     
     void Pickup()
     {
-        heldObject = collidedObject;
+        heldObject = collidedObject.GetComponent<GrabbableBase>();
         pickupCooldown = 0;
         
         Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
-        heldRB.simulated = false;
+        heldObject.GetComponent<Collider2D>().isTrigger = true;
+        heldRB.bodyType = RigidbodyType2D.Kinematic;
     }
 
     private void SpawnGhost()
