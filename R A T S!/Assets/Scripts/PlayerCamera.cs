@@ -15,7 +15,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.position =
             MysticUtil.DampVector(transform.position, player.transform.position + offset, speed, Time.deltaTime);
