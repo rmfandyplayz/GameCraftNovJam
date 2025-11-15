@@ -8,6 +8,7 @@ public class PlayButton : GenericMenuButton
     private bool isInteractable = true;
 
     [SerializeField] Button button;
+    [SerializeField] BottomBar bottomBar; // for the level select screen
 
     private Coroutine playButtonCoroutine;
 
@@ -15,12 +16,12 @@ public class PlayButton : GenericMenuButton
     const float rippleEffectDistance = 15f;
     const float animationDuration = 0.35f;
 
-    GenericMenuButton[] menuButtons; 
+    MainMenu menuScript;
 
     void Start()
     {
+        menuScript = FindFirstObjectByType<MainMenu>();
         SetOriginalPosition();
-        menuButtons = FindObjectsByType<GenericMenuButton>(FindObjectsSortMode.None);
     }
 
     public override void OnClick()
@@ -48,14 +49,14 @@ public class PlayButton : GenericMenuButton
         if (!isInteractable)
             return;
 
-        foreach (Button b in FindObjectsByType<Button>(FindObjectsSortMode.None))
+        foreach (Button b in menuScript.GetTopLevelButtons())
         {
             DOTween.Kill(b);
         }
 
         button.image.rectTransform.DOScale(scaleUpSize, animationDuration).SetEase(Ease.OutBack);
 
-        foreach (Button b in FindObjectsByType<Button>(FindObjectsSortMode.None))
+        foreach (Button b in menuScript.GetTopLevelButtons())
         {
             if (b.gameObject != this.gameObject)
             {
@@ -72,7 +73,7 @@ public class PlayButton : GenericMenuButton
         if(!isInteractable) 
             return;
 
-        foreach (Button b in FindObjectsByType<Button>(FindObjectsSortMode.None))
+        foreach (Button b in menuScript.GetTopLevelButtons())
         {
             DOTween.Kill(b);
         }
@@ -102,7 +103,7 @@ public class PlayButton : GenericMenuButton
         yield return new WaitForSeconds(0.1f);
 
         // make all buttons explode around the screen
-        foreach (var genBtn in menuButtons)
+        foreach (var genBtn in menuScript.GetTopLevelButtons())
         {
             RectTransform rt = genBtn.GetComponent<Button>().image.rectTransform;
 
@@ -131,7 +132,8 @@ public class PlayButton : GenericMenuButton
             genBtn.GetComponent<Button>().image.DOFade(0, duration);
         }
 
-
+        yield return new WaitForSeconds(0.8f);
+        bottomBar.ActivateBottomBar();
 
 
 
@@ -151,7 +153,7 @@ public class PlayButton : GenericMenuButton
     {
         button.image.rectTransform
             .DOAnchorPos(GetOriginalPos(), animationDuration)
-            .SetEase(Ease.OutBack);
+            .SetEase(Ease.OutExpo);
 
         button.image.rectTransform.DORotate(Vector3.zero, animationDuration);
         button.image.DOFade(1, animationDuration);

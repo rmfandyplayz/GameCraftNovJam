@@ -15,12 +15,12 @@ public class ExitButton : GenericMenuButton
     const float rippleEffectDistance = 15f;
     const float animationDuration = 0.35f;
 
-    GenericMenuButton[] menuButtons;
+    MainMenu menuScript;
 
     void Start()
     {
         SetOriginalPosition();
-        menuButtons = FindObjectsByType<GenericMenuButton>(FindObjectsSortMode.None);
+        menuScript = FindFirstObjectByType<MainMenu>();
     }
 
     public override void OnClick()
@@ -33,14 +33,14 @@ public class ExitButton : GenericMenuButton
         if (!isInteractable)
             return;
 
-        foreach (Button b in FindObjectsByType<Button>(FindObjectsSortMode.None))
+        foreach (Button b in menuScript.GetTopLevelButtons())
         {
             DOTween.Kill(b);
         }
 
         button.image.rectTransform.DOScale(scaleUpSize, animationDuration).SetEase(Ease.OutBack);
 
-        foreach (Button b in FindObjectsByType<Button>(FindObjectsSortMode.None))
+        foreach (Button b in menuScript.GetTopLevelButtons())
         {
             if (b.gameObject != this.gameObject)
             {
@@ -57,7 +57,7 @@ public class ExitButton : GenericMenuButton
         if (!isInteractable)
             return;
 
-        foreach (Button b in FindObjectsByType<Button>(FindObjectsSortMode.None))
+        foreach (Button b in menuScript.GetTopLevelButtons())
         {
             DOTween.Kill(b);
         }
@@ -85,7 +85,7 @@ public class ExitButton : GenericMenuButton
     {
         button.image.rectTransform
             .DOAnchorPos(GetOriginalPos(), animationDuration)
-            .SetEase(Ease.OutBack);
+            .SetEase(Ease.OutExpo);
 
         button.image.rectTransform.DORotate(Vector3.zero, animationDuration);
         button.image.DOFade(1, animationDuration);
