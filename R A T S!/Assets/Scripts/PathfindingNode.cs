@@ -21,11 +21,9 @@ public class PathfindingNode : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (editor_otherNode is not null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(editor_otherNode.transform.position, .2f);
-        }
+        if (!editor_otherNode) return;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(editor_otherNode.transform.position, .2f);
     }
 #endif
 }
