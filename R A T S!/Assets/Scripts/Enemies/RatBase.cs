@@ -6,14 +6,19 @@ public class RatBase : MonoBehaviour
 {
     private PathfindingManager pathManager;
 
-    private Stack<PathfindingNode> currentRoute = null;
+    private Stack<PathfindingNode> currentRoute = new();
     private PathfindingNode currentTargetedNode;
+    private bool hasLoaded = false;
 
     private Vector3 goalPos;
 
     [SerializeField] private float maxSpeed;
     [SerializeField] private float accel;
     [SerializeField] private float reachedDist = .01f;
+
+    private float stuckTimer = 0;
+    [SerializeField] private float maxStuckTime;
+    [SerializeField] private float maxStuckSpeed;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -51,17 +56,30 @@ public class RatBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentRoute is null)
+        if (!hasLoaded)
         {
+            hasLoaded = true;
             Reroute();
         }
-
         Vector3 distance = currentTargetedNode.transform.position - transform.position;
         if (distance.magnitude <= reachedDist)
         {
             ReachedNode();
             // is this framerate dependent? yes. do i care? now
             return;
+        }
+        if (rb.linearVelocity.magnitude <= maxStuckSpeed)
+        {
+            stuckTimer += Time.deltaTime;
+            if (stuckTimer > maxStuckTime)
+            {
+                currentRoute.Push(currentTargetedNode);
+                currentTargetedNode = pathManager.GetNearestNode(transform.position);
+            }
+        }
+        else
+        {
+            stuckTimer = 0;
         }
         
         

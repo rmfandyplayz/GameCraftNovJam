@@ -16,6 +16,8 @@ public class PathfindingManager : MonoBehaviour
 
     public int testCount = 1;
 
+    [SerializeField] private LayerMask raycastContactFilter;
+
 
     private void Start()
     {
@@ -85,7 +87,7 @@ public class PathfindingManager : MonoBehaviour
         return null;
     }
 
-    public PathfindingNode GetNearestNode(Vector3 position)
+    public PathfindingNode GetNearestNode(Vector3 position, float castRadius = .2f)
     {
         float nearestDist = 99999999;
         PathfindingNode nearestNode = nodes[0];
@@ -94,6 +96,11 @@ public class PathfindingManager : MonoBehaviour
             float dist = (position - node.transform.position).magnitude;
             if (dist < nearestDist)
             {
+                RaycastHit2D hit = Physics2D.CircleCast(position, castRadius, node.transform.position - position, (node.transform.position - position).magnitude, raycastContactFilter);
+                if (hit.collider is not null)
+                {
+                    continue;
+                }
                 nearestDist = dist;
                 nearestNode = node;
             }
