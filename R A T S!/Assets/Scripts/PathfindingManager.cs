@@ -27,6 +27,18 @@ public class PathfindingManager : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+        
+        
+        nodes = FindObjectsByType<PathfindingNode>(FindObjectsSortMode.None);
+        for (int i = 0; i < connections.Count; i++)
+        {
+            if (connections[i].dest == null || connections[i].source == null)
+            {
+                connections.RemoveAt(i);
+                i--;
+            }
+        }
+        
         foreach (PathfindingConnection connection in connections)
         {
             if (connection.source == null || connection.dest == null)
@@ -39,17 +51,7 @@ public class PathfindingManager : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        return;
-        nodes = FindObjectsByType<PathfindingNode>(FindObjectsSortMode.None);
-        PathfindTo(transform.position, transform.GetChild(0).position);
-        for (int i = 0; i < connections.Count; i++)
-        {
-            if (connections[i].dest == null || connections[i].source == null)
-            {
-                connections.RemoveAt(i);
-                i--;
-            }
-        }
+        //PathfindTo(transform.position, transform.GetChild(0).position);
     }
 
     public PathfindingNode[] GetAllNodes()
