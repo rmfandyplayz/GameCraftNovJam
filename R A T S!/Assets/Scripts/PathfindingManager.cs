@@ -210,9 +210,12 @@ public class PathfindingManager : MonoBehaviour
         }
         #endif
 
+        if (Application.isPlaying)
+        {
+            Destroy(gameObject);
+            Debug.LogError("FATAL ERROR: INFINITE LOOP DETECTED ON PATHFINDING");
+        }
         
-        Destroy(gameObject);
-        Debug.LogError("FATAL ERROR: INFINITE LOOP DETECTED ON PATHFINDING");
         return null;
     }
 }
