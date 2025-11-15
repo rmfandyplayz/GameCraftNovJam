@@ -15,15 +15,16 @@ public class Player : MonoBehaviour
     private Transform player;
     public Transform collidedObject;
     private Animator animator;
+    private SpriteRenderer broomRenderer;
     
     // --- Movement Variables ---
     public float force;
     private bool dashing = false;
     private bool dashOnCooldown = false;
+    private Transform hand;
 
     // --- Held Item Variables ---
     private bool holdingItem = true;
-    private Transform hand;
     private bool throwing = false;
     public float throwSpeed;
     private bool locked = false;
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
         player = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         hand = transform.GetChild(0);
+        broomRenderer = GameObject.FindGameObjectWithTag("Broom").GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -172,27 +174,32 @@ public class Player : MonoBehaviour
         {
             animator.SetFloat("Idle Index", 2);
             animator.SetFloat("Run Index", 0);
+            broomRenderer.sortingOrder = 4;
         }
         else if (facingDown)
         {
             animator.SetFloat("Idle Index", 1);
             animator.SetFloat("Run Index", 1);
+            broomRenderer.sortingOrder = 4;
         }
         else if (facingRight)
         {
             animator.SetFloat("Idle Index", 3);
             animator.SetFloat("Run Index", 3);
+            broomRenderer.sortingOrder = 4;
         }
         else if (facingLeft)
         {
             animator.SetFloat("Idle Index", 0);
             animator.SetFloat("Run Index", 2);
+            broomRenderer.sortingOrder = 6;
+
         }
 
         // --- Holding Objects ---
         if (holdingItem)
         {
-            heldObject.position = new UnityEngine.Vector3(player.position.x + .6f, player.position.y -.8f, player.position.z);
+            heldObject.position = hand.position;
         }
 
         // --- Throwing Objects ---
@@ -261,7 +268,7 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
         {
             // --- Picking up Object
-        if (collision.CompareTag("Item") && !holdingItem && !throwing)
+        if (collision.CompareTag("Broom") && !holdingItem && !throwing)
         {
             isCollidingWithObject = true;
             collidedObject = collision.transform;
@@ -271,7 +278,7 @@ public class Player : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         // --- Picking up Object
-        if (collision.CompareTag("Item") && !holdingItem)
+        if (collision.CompareTag("Broom") && !holdingItem)
         {
             isCollidingWithObject = false;
         }

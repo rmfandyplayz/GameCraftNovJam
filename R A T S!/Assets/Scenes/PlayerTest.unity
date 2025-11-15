@@ -131,10 +131,9 @@ GameObject:
   - component: {fileID: 601661269}
   - component: {fileID: 601661268}
   - component: {fileID: 601661267}
-  - component: {fileID: 601661271}
   m_Layer: 0
   m_Name: Held Object
-  m_TagString: Item
+  m_TagString: Broom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +254,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: -1705372894750326677, guid: cd1f55f5c88969344990093fe5f31fd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -282,38 +281,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &601661271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601661266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8935e03361a14ec4b8edc872f76bc822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Weight: 1
-  m_Data: {m_ConstrainedObject: {fileID: 601661270}, m_SourceObjects:
-      m_Length: 1
-      m_Item0: {transform: {fileID: 1648593610}, weight: 1}
-      m_Item1: {transform: {fileID: 0}, weight: 0}
-      m_Item2: {transform: {fileID: 0}, weight: 0}
-      m_Item3: {transform: {fileID: 0}, weight: 0}
-      m_Item4: {transform: {fileID: 0}, weight: 0}
-      m_Item5: {transform: {fileID: 0}, weight: 0}
-      m_Item6: {transform: {fileID: 0}, weight: 0}
-      m_Item7: {transform: {fileID: 0}, weight: 0}
-, m_ConstrainedPositionAxes:
-      x: 1
-      y: 1
-      z: 1
-, m_ConstrainedRotationAxes:
-      x: 1
-      y: 1
-      z: 1
-, m_MaintainPositionOffset: 0, m_MaintainRotationOffset: 0}
 --- !u!1 &1340105907
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +430,7 @@ GameObject:
   m_Layer: 0
   m_Name: BroomHandIndicator
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -476,7 +443,7 @@ Transform:
   m_GameObject: {fileID: 1393075616}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.467, y: -1.006058, z: 0.08762999}
+  m_LocalPosition: {x: 0.58, y: -0.89, z: 0.08762999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -519,7 +486,7 @@ MonoBehaviour:
   heldObject: {fileID: 601661270}
   collidedObject: {fileID: 0}
   force: 5
-  throwSpeed: 0.4
+  throwSpeed: 0.075
   dashTime: 0.2
   dashCooldownTime: 0.3
   throwTime: 0.5
@@ -567,7 +534,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 3433690434763426518, guid: aa0a082e6aa9d439da97dee8e2f743a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -660,7 +627,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.3, y: 3.3}
+    oldSize: {x: 1.7, y: 3.3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
