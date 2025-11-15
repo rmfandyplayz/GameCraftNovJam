@@ -2,6 +2,7 @@ using System.Data.Common;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     public Transform heldObject;
     private Transform player;
     public Transform collidedObject;
+    private Animator animator;
     
     // --- Movement Variables ---
     public float force;
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         player = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -153,6 +156,37 @@ public class Player : MonoBehaviour
             }
         }
 
+        // --- Movement Animation Info ---
+
+        if (rb.linearVelocityX == 0 && rb.linearVelocityY == 0)
+        {
+            animator.SetBool("Moving", false);
+        }
+        else
+        {
+            animator.SetBool("Moving", true);
+        }
+        if (facingUp)
+        {
+            animator.SetFloat("Idle Index", 2);
+            animator.SetFloat("Run Index", 0);
+        }
+        else if (facingDown)
+        {
+            animator.SetFloat("Idle Index", 1);
+            animator.SetFloat("Run Index", 1);
+        }
+        else if (facingRight)
+        {
+            animator.SetFloat("Idle Index", 3);
+            animator.SetFloat("Run Index", 3);
+        }
+        else if (facingLeft)
+        {
+            animator.SetFloat("Idle Index", 0);
+            animator.SetFloat("Run Index", 2);
+        }
+
         // --- Holding Objects ---
         if (holdingItem)
         {
@@ -173,6 +207,7 @@ public class Player : MonoBehaviour
             {
                 targetUp = true;
                 locked = true;
+                
             }
             if (facingDown && !locked)
             {
@@ -220,7 +255,6 @@ public class Player : MonoBehaviour
         {
             Pickup();
         }
-        Debug.Log(isCollidingWithObject);
     }
     void OnTriggerEnter2D(Collider2D collision)
         {

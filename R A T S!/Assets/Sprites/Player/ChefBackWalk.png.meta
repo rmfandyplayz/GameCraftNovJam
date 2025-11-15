@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: c643127182d3f4493836d7e0b1fd980f
+guid: fd19e715878631f45879897b38aed85a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8719032940352470580
-    second: ChefLeftWalk_0
+      213: -7246456812411319270
+    second: ChefBackWalk_0
   - first:
-      213: -5303277249713968107
-    second: ChefLeftWalk_1
+      213: -7341804395934206410
+    second: ChefBackWalk_1
   - first:
-      213: 7676108906932973570
-    second: ChefLeftWalk_2
+      213: -1487816801664802013
+    second: ChefBackWalk_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,24 +102,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChefLeftWalk_0
+      name: ChefBackWalk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -134,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43e73aa834a300970800000000000000
-      internalID: 8719032940352470580
+      spriteID: a1c83082ce96f6b90800000000000000
+      internalID: -7246456812411319270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChefLeftWalk_1
+      name: ChefBackWalk_1
       rect:
         serializedVersion: 2
         x: 33
@@ -156,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 51c63697079f666b0800000000000000
-      internalID: -5303277249713968107
+      spriteID: 636b0f9eccbac1a90800000000000000
+      internalID: -7341804395934206410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChefLeftWalk_2
+      name: ChefBackWalk_2
       rect:
         serializedVersion: 2
         x: 0
@@ -176,16 +163,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 200b3fe8164078a60800000000000000
-      internalID: 7676108906932973570
+      spriteID: 44d6765b8b6a56b458eb7eab9b9cc68a
+      internalID: -1487816801664802013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChefLeftWalk_3
+      name: ChefBackWalk_3
       rect:
         serializedVersion: 2
         x: 33
@@ -200,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d302d6a92f49b94abe254bd23dcef1f
-      internalID: 1338533714
+      spriteID: 67307129e0193b2489aa38385704c6d0
+      internalID: 571832061
       vertices: []
       indices: 
       edges: []
@@ -210,7 +197,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d9b43893e8df04f4caa17ca7fe2bc06b
+    spriteID: b181a14fc023c754bb85913d2540b7e2
     internalID: 0
     vertices: []
     indices: 
@@ -220,10 +207,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChefLeftWalk_0: 8719032940352470580
-      ChefLeftWalk_1: -5303277249713968107
-      ChefLeftWalk_2: 7676108906932973570
-      ChefLeftWalk_3: 1338533714
+      ChefBackWalk_0: -7246456812411319270
+      ChefBackWalk_1: -7341804395934206410
+      ChefBackWalk_2: -1487816801664802013
+      ChefBackWalk_3: 571832061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

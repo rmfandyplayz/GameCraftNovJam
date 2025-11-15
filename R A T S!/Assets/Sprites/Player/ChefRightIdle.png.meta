@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: c643127182d3f4493836d7e0b1fd980f
+guid: 9d3ac1465fd49ae4b9826ba1f7452909
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8719032940352470580
-    second: ChefLeftWalk_0
-  - first:
-      213: -5303277249713968107
-    second: ChefLeftWalk_1
-  - first:
-      213: 7676108906932973570
-    second: ChefLeftWalk_2
+      213: 6751310799450418318
+    second: ChefRightIdle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChefLeftWalk_0
+      name: ChefRightIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -134,61 +115,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43e73aa834a300970800000000000000
-      internalID: 8719032940352470580
+      spriteID: e8c2081f66971bd50800000000000000
+      internalID: 6751310799450418318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChefLeftWalk_1
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 33
-        width: 33
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 51c63697079f666b0800000000000000
-      internalID: -5303277249713968107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChefLeftWalk_2
+      name: ChefRightIdle_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 33
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 200b3fe8164078a60800000000000000
-      internalID: 7676108906932973570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChefLeftWalk_3
-      rect:
-        serializedVersion: 2
-        x: 33
         y: 0
         width: 33
         height: 33
@@ -200,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d302d6a92f49b94abe254bd23dcef1f
-      internalID: 1338533714
+      spriteID: 0498d41a43281844791e508557219385
+      internalID: -1161751518
       vertices: []
       indices: 
       edges: []
@@ -210,7 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d9b43893e8df04f4caa17ca7fe2bc06b
+    spriteID: 32269ee994ab83840af8c0f7fd0d4a94
     internalID: 0
     vertices: []
     indices: 
@@ -220,10 +157,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChefLeftWalk_0: 8719032940352470580
-      ChefLeftWalk_1: -5303277249713968107
-      ChefLeftWalk_2: 7676108906932973570
-      ChefLeftWalk_3: 1338533714
+      ChefRightIdle_0: 6751310799450418318
+      ChefRightIdle_1: -1161751518
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
