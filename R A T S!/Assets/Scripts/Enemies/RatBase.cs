@@ -16,11 +16,15 @@ public class RatBase : MonoBehaviour
     [SerializeField] private float reachedDist = .01f;
 
     private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pathManager = FindAnyObjectByType<PathfindingManager>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Reroute()
@@ -63,6 +67,11 @@ public class RatBase : MonoBehaviour
         
         rb.AddForce(distance.normalized * (accel * Time.deltaTime * rb.mass), ForceMode2D.Impulse);
         rb.linearVelocity = rb.linearVelocity.normalized * Mathf.Min(rb.linearVelocity.magnitude, maxSpeed);
+        
+        animator.SetBool("MovingHoriz", Mathf.Abs(rb.linearVelocityX) > Mathf.Abs(rb.linearVelocityY));
+        animator.SetBool("IsMoving", rb.linearVelocity.magnitude > .01f);
+        spriteRenderer.flipX = rb.linearVelocityX > 0;
+
     }
 
     private void OnDrawGizmos()
