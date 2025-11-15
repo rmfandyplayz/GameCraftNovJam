@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class GenericMenuButton : MonoBehaviour
 {
     Vector2 originalPos;
-    Vector2 targetPos;
 
     /// <summary>
     /// Disable this button from being interacted with in any way.
@@ -47,19 +46,9 @@ public abstract class GenericMenuButton : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the target position of this button based on the ripple effect distance
+    /// An optional implementable function to make the button go back to its original position
     /// </summary>
-    /// <param name="rippleEffectDistance"></param>
-    public void SetTargetPos(float rippleEffectDistance)
-    {
-        targetPos.y = originalPos.y - rippleEffectDistance;
-    }
+    public virtual void TweenToOriginalPosition() { }
 
-    /// <summary>
-    /// Gets the target position of this button based on the ripple effect distance
-    /// </summary>
-    public virtual Vector2 GetTargetPos()
-    {
-        return targetPos;
-    }
+
 }
