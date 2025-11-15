@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 
     // --- Held Item Variables ---
     private bool holdingItem = true;
+    private Transform hand;
     private bool throwing = false;
     public float throwSpeed;
     private bool locked = false;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         player = GetComponent<Transform>();
         animator = GetComponent<Animator>();
+        hand = transform.GetChild(0);
     }
 
     // Update is called once per frame
@@ -190,7 +192,7 @@ public class Player : MonoBehaviour
         // --- Holding Objects ---
         if (holdingItem)
         {
-            heldObject.position = new UnityEngine.Vector3(player.position.x + 1, player.position.y + .9f, player.position.z);
+            heldObject.position = hand.position;
         }
 
         // --- Throwing Objects ---
