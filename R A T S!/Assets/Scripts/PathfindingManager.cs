@@ -39,6 +39,7 @@ public class PathfindingManager : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        return;
         nodes = FindObjectsByType<PathfindingNode>(FindObjectsSortMode.None);
         PathfindTo(transform.position, transform.GetChild(0).position);
         for (int i = 0; i < connections.Count; i++)
