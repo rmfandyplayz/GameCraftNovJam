@@ -105,6 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976bf6f435b1cbd4398ec6af2fd2fe05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 2
+  deathEffect: {fileID: 3170350636944301649, guid: adef9dc1f021c45668b338cafaf6e6be, type: 3}
+  iFrameDuration: 0.5
   maxSpeed: 5
   accel: 15
   reachedDist: 1

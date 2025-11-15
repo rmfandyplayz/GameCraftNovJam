@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class RatBase : MonoBehaviour
 {
+    [Header("Stats")]
+    public int Health = 1;
+
+    [Header("VFX")]
+    public GameObject deathEffect;
+    public float iFrameDuration = 0.2f;
+    private bool isInvulnerable = false;
+    private Color defaultColor;
+
+    
     private PathfindingManager pathManager;
 
     private Stack<PathfindingNode> currentRoute = new();
@@ -30,6 +40,8 @@ public class RatBase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        defaultColor = spriteRenderer.color;
     }
 
     void Reroute()
@@ -110,6 +122,29 @@ public class RatBase : MonoBehaviour
 
     public void TakeDamage()
     {
-        Destroy(gameObject);
+        if (isInvulnerable) return;  // ignore hit
+
+        Health -= 1;
+        StartCoroutine(IFrames());   // start invulnerability
+
+        if (Health < 1)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
+    private System.Collections.IEnumerator IFrames()
+    {
+        isInvulnerable = true;
+    
+        // flash red
+        spriteRenderer.color = Color.red;
+
+        yield return new WaitForSeconds(iFrameDuration);
+
+        // restore color
+        spriteRenderer.color = defaultColor;
+
+        isInvulnerable = false;
     }
 }
