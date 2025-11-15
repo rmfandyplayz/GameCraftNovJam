@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     public Transform collidedObject;
     private Animator animator;
-    private SpriteRenderer broomRenderer;
+    private SpriteRenderer itemRenderer;
     private LightController lightController;
     
     // --- Movement Variables ---
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         playerSR = GetComponent<SpriteRenderer>();
         hand = transform.GetChild(0);
-        broomRenderer = GameObject.FindGameObjectWithTag("Item").transform.parent.GetComponent<SpriteRenderer>();
+        itemRenderer = GameObject.FindGameObjectWithTag("Item").transform.parent.GetComponent<SpriteRenderer>();
 
         lightLeft = maxLight;
         lightController = transform.Find("DisapperingLight").GetComponent<LightController>();
@@ -131,25 +131,25 @@ public class Player : MonoBehaviour
             {
                 animator.SetFloat("Idle Index", 2);
                 animator.SetFloat("Run Index", 0);
-                broomRenderer.sortingOrder = 4;
+                itemRenderer.sortingOrder = 4;
             }
             else if (faceDir.y < 0)
             {
                 animator.SetFloat("Idle Index", 1);
                 animator.SetFloat("Run Index", 1);
-                broomRenderer.sortingOrder = 4;
+                itemRenderer.sortingOrder = 6;
             }
             else if (faceDir.x > 0)
             {
                 animator.SetFloat("Idle Index", 3);
                 animator.SetFloat("Run Index", 3);
-                broomRenderer.sortingOrder = 4;
+                itemRenderer.sortingOrder = 4;
             }
             else if (faceDir.x < 0)
             {
                 animator.SetFloat("Idle Index", 0);
                 animator.SetFloat("Run Index", 2);
-                broomRenderer.sortingOrder = 6;
+                itemRenderer.sortingOrder = 6;
             }
         }
 
