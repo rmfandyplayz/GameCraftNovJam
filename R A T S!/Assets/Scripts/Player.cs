@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
         // --- Holding Objects ---
         if (holdingItem)
         {
-            heldObject.position = hand.position;
+            heldObject.position = new UnityEngine.Vector3(player.position.x + .6f, player.position.y -.8f, player.position.z);
         }
 
         // --- Throwing Objects ---
