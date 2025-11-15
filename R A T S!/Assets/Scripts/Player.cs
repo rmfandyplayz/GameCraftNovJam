@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     public float throwTime;
     public float pickupCooldown;
 
-    private bool isCollidingWithObject = true;
+    private bool isCollidingWithObject = false;
 
     void Start()
     {
@@ -216,10 +216,11 @@ public class Player : MonoBehaviour
             }
         }
         // Picking Up Objects
-            if (Input.GetKey("q") && !holdingItem && !throwing && isCollidingWithObject)
-            {
-                Pickup();
-            }
+        if (Input.GetKey("q") && !holdingItem && !throwing && isCollidingWithObject)
+        {
+            Pickup();
+        }
+        Debug.Log(isCollidingWithObject);
     }
     void OnTriggerEnter2D(Collider2D collision)
         {
@@ -247,3 +248,4 @@ public class Player : MonoBehaviour
         pickupCooldown = 0;
     }
 }
+
