@@ -14,6 +14,10 @@ public class RatBase : MonoBehaviour
     private bool isInvulnerable = false;
     private Color defaultColor;
 
+    [Header("sound effects")]
+    public AudioSource attack;
+    public AudioSource hurt;
+
     [Header("Conditions")]
     public bool movingEnemy = true;
 
@@ -90,6 +94,12 @@ public class RatBase : MonoBehaviour
             {
                 //player hurt
                 player.Damage(damage);
+                
+                if (movingEnemy == true)
+                {
+                    attack.Play();
+                }   
+
                 //slight shake when dealing damage
                 FindAnyObjectByType<PlayerCamera>().ShakeCamera(0.03f, 0.1f);
             }
@@ -178,8 +188,13 @@ public class RatBase : MonoBehaviour
     public void TakeDamage()
     {
         if (isInvulnerable) return;  // ignore hit
-
+        
         Health -= 1;
+        if (movingEnemy == true){
+            hurt.Play();
+        }
+        
+
         StartCoroutine(IFrames());   // start invulnerability
 
         if (Health < 1)
