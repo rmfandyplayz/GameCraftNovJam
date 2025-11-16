@@ -268,20 +268,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldObject: {fileID: 0}
   collidedObject: {fileID: 0}
-  force: 10
-  dashMultiplier: 3
+  force: 10.5
+  dashMultiplier: 4
   maxLight: 100
   lightLeft: 0
   lightDecayPerSecond: 2.5
   throwSpeed: 1000
-  dashTime: 0.2
+  dashTime: 0.13
   dashCooldownTime: 0.3
   pickupCooldown: 0.4
   faceDir: {x: 0, y: 0}
-  ghostSprite: {fileID: 0}
-  ghostColor: {r: 1, g: 1, b: 0, a: 0.6}
-  ghostLifetime: 0.25
-  ghostInterval: 0.03
+  ghostSprite: {fileID: 21300000, guid: aaac5b433f395449388c35cca625b822, type: 3}
+  ghostColor: {r: 0.4999555, g: 0.9289992, b: 0.990566, a: 0.36078432}
+  ghostLifetime: 0.16
+  ghostInterval: 0.02
 --- !u!61 &6810427773328178742
 BoxCollider2D:
   m_ObjectHideFlags: 0
