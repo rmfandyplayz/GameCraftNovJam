@@ -40,6 +40,6 @@ public class GlobalPlayerUI : MonoBehaviour
     /// <param name="ingredientID"></param>
     public void SetIngredient(int ingredientSpriteIndex, Ingredients ingredientID)
     {
-        recipeController.(ingredientSpriteIndex, ingredientID);
+        recipeController.SetIngredient(ingredientSpriteIndex, ingredientID);
     }
 }

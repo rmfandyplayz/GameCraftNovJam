@@ -28,7 +28,7 @@ public class ExitButton : GenericMenuButton
     public override void OnClick()
     {
         sounds[0].Play();
-        throw new System.NotImplementedException();
+        Application.Quit();
     }
 
     public override void OnPointerEnter()
