@@ -79,6 +79,7 @@ public class RatBase : MonoBehaviour
     {
         if (movingEnemy == false)
         {
+            rb.linearVelocity = new Vector2(0,0);
             return;
         }
 
@@ -128,8 +129,6 @@ public class RatBase : MonoBehaviour
         }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position,
             seeDistance, seeCollisionMask);
-        
-        Gizmos.DrawRay(transform.position, player.transform.position - transform.position);
 
         return hit.collider is null;
     }

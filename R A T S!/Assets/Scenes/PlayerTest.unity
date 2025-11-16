@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 523078567}
   - component: {fileID: 523078566}
   - component: {fileID: 523078565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6278,11 +6278,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1718896563}
   - component: {fileID: 1718896562}
-  - component: {fileID: 1718896561}
   - component: {fileID: 1718896560}
   - component: {fileID: 1718896559}
   - component: {fileID: 1718896558}
   - component: {fileID: 1718896564}
+  - component: {fileID: 1718896565}
   m_Layer: 0
   m_Name: Shrieker
   m_TagString: Enemy
@@ -6385,27 +6385,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1718896561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718896557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 976bf6f435b1cbd4398ec6af2fd2fe05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 2
-  deathEffect: {fileID: 3170350636944301649, guid: adef9dc1f021c45668b338cafaf6e6be, type: 3}
-  iFrameDuration: 0.5
-  movingEnemy: 1
-  maxSpeed: 5
-  accel: 15
-  reachedDist: 1
-  maxStuckTime: 1
-  maxStuckSpeed: 0.5
 --- !u!212 &1718896562
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6490,6 +6469,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b4f2cb1eb60cf428151a787eb86b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ratBase: {fileID: 1718896565}
+--- !u!114 &1718896565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718896557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976bf6f435b1cbd4398ec6af2fd2fe05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
+  deathEffect: {fileID: 3170350636944301649, guid: adef9dc1f021c45668b338cafaf6e6be, type: 3}
+  iFrameDuration: 0.5
+  movingEnemy: 1
+  seeCollisionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  seeDistance: 5
+  maxSpeed: 5
+  accel: 15
+  reachedDist: 1
+  maxStuckTime: 1
+  maxStuckSpeed: 0.5
 --- !u!1001 &1734604343
 PrefabInstance:
   m_ObjectHideFlags: 0
