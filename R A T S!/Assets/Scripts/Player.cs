@@ -141,6 +141,10 @@ public class Player : MonoBehaviour
     {
         posessionTimer = possessTime;
         lastPossessTime = possessTime;
+        if (heldObject is not null)
+        {
+            GrabThrow();
+        }
     }
 
     // Update is called once per frame
