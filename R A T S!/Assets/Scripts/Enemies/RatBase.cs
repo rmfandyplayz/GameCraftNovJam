@@ -91,7 +91,7 @@ public class RatBase : MonoBehaviour
                 //player hurt
                 player.Damage(damage);
                 //slight shake when dealing damage
-                FindAnyObjectByType<PlayerCamera>().ShakeCamera(0.06f, 0.06f);
+                FindAnyObjectByType<PlayerCamera>().ShakeCamera(0.03f, 0.1f);
             }
         }
         else

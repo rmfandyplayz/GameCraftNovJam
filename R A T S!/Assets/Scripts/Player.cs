@@ -57,6 +57,10 @@ public class Player : MonoBehaviour
     private float ghostTimer = 0f;
     private SpriteRenderer playerSR;
 
+    // NEW: damage flash
+    private Color originalColor;
+    private float damageFlashTimer;
+
 
     [SerializeField] private float beginDamageFilter;
     private Volume dangerVolume;
@@ -68,6 +72,8 @@ public class Player : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         hand = transform.GetChild(0);
 
+        originalColor = playerSR.color;
+
         lightLeft = maxLight;
         lightController = transform.Find("DisapperingLight").GetComponent<LightController>();
 
@@ -77,14 +83,27 @@ public class Player : MonoBehaviour
     public void Damage(float amount)
     {
         if (iFrameTimer > 0) return;
-        if(lightLeft <= 0)
+
+        // --- Start red flash ---
+        if (playerSR != null)
+        {
+            playerSR.color = Color.red;
+            damageFlashTimer = 0.1f;   // flash duration
+        }
+
+        if (lightLeft <= 0)
         {
             FadeoutTransition.SceneTransition("DieScreen");
             iFrameTimer = 999;
-        } else
+        }
+        else
+        {
             iFrameTimer = iFrameTime;
+        }
+
         lightLeft -= amount;
     }
+
     
 public void Dash()
 {
@@ -124,6 +143,16 @@ public void Dash()
 
         // --- Timers ---
         
+            // --- Damage flash timer ---
+        if (damageFlashTimer > 0f)
+        {
+            damageFlashTimer -= Time.deltaTime;
+            if (damageFlashTimer <= 0f && playerSR != null)
+            {
+                playerSR.color = originalColor;
+            }
+    }
+
         pickupCooldown += Time.deltaTime;
         iFrameTimer -= Time.deltaTime;
 
