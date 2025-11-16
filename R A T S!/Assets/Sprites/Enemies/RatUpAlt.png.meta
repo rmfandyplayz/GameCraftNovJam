@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 2ed615a84adb649a784d0fea56002c89
+guid: 7985e29ad3bd7994a8694359e0a6f032
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2217581310910974929
-    second: RatBrownAndGreyRunUp_0
+      213: -8648760570831302516
+    second: RatUpAlt_0
   - first:
-      213: -1875719423616890751
-    second: RatBrownAndGreyRunUp_1
+      213: 781272770513037580
+    second: RatUpAlt_1
   - first:
-      213: 1868350471900093686
-    second: RatBrownAndGreyRunUp_2
+      213: -4707792581104475765
+    second: RatUpAlt_2
   - first:
-      213: 4506808362574612807
-    second: RatBrownAndGreyRunUp_3
+      213: 6250213214165891300
+    second: RatUpAlt_3
   - first:
-      213: 9050548601285346842
-    second: RatBrownAndGreyRunUp_4
+      213: 6688269618780654229
+    second: RatUpAlt_4
   - first:
-      213: -652170396881726988
-    second: RatBrownAndGreyRunUp_5
+      213: 4714572279574462033
+    second: RatUpAlt_5
   - first:
-      213: 7422173701332712007
-    second: RatBrownAndGreyRunUp_6
+      213: 1482890647189204711
+    second: RatUpAlt_6
   - first:
-      213: 6045221200900074379
-    second: RatBrownAndGreyRunUp_7
+      213: -1073581849338190842
+    second: RatUpAlt_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_0
+      name: RatUpAlt_0
       rect:
         serializedVersion: 2
         x: 0
@@ -149,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1dbc469f37e66ce10800000000000000
-      internalID: 2217581310910974929
+      spriteID: c80123c751e69f780800000000000000
+      internalID: -8648760570831302516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_1
+      name: RatUpAlt_1
       rect:
         serializedVersion: 2
         x: 11
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 188c3094f1b18f5e0800000000000000
-      internalID: -1875719423616890751
+      spriteID: c096d170273a7da00800000000000000
+      internalID: 781272770513037580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_2
+      name: RatUpAlt_2
       rect:
         serializedVersion: 2
         x: 22
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6fcd981fad6bde910800000000000000
-      internalID: 1868350471900093686
+      spriteID: b816c07279f8aaeb0800000000000000
+      internalID: -4707792581104475765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_3
+      name: RatUpAlt_3
       rect:
         serializedVersion: 2
         x: 0
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7490502e3566b8e30800000000000000
-      internalID: 4506808362574612807
+      spriteID: 4e87fc0adc73db650800000000000000
+      internalID: 6250213214165891300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_4
+      name: RatUpAlt_4
       rect:
         serializedVersion: 2
         x: 11
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a16850240020a9d70800000000000000
-      internalID: 9050548601285346842
+      spriteID: 59a457548c181dc50800000000000000
+      internalID: 6688269618780654229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_5
+      name: RatUpAlt_5
       rect:
         serializedVersion: 2
         x: 22
@@ -259,14 +259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f1d6d8ba7603f6f0800000000000000
-      internalID: -652170396881726988
+      spriteID: 15e70f762868d6140800000000000000
+      internalID: 4714572279574462033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_6
+      name: RatUpAlt_6
       rect:
         serializedVersion: 2
         x: 0
@@ -281,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 74abe2138abd00760800000000000000
-      internalID: 7422173701332712007
+      spriteID: 7ee267adf29449410800000000000000
+      internalID: 1482890647189204711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_7
+      name: RatUpAlt_7
       rect:
         serializedVersion: 2
         x: 11
@@ -303,8 +303,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b8b2f4c37a0f4e350800000000000000
-      internalID: 6045221200900074379
+      spriteID: 604e3e00ffed911f0800000000000000
+      internalID: -1073581849338190842
       vertices: []
       indices: 
       edges: []
@@ -313,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6bf57d455e88e26448fcb732dcadcc4b
+    spriteID: 3151f9709d84f7b408e2d29521ec4331
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RatBrownAndGreyRunUp_0: 2217581310910974929
-      RatBrownAndGreyRunUp_1: -1875719423616890751
-      RatBrownAndGreyRunUp_2: 1868350471900093686
-      RatBrownAndGreyRunUp_3: 4506808362574612807
-      RatBrownAndGreyRunUp_4: 9050548601285346842
-      RatBrownAndGreyRunUp_5: -652170396881726988
-      RatBrownAndGreyRunUp_6: 7422173701332712007
-      RatBrownAndGreyRunUp_7: 6045221200900074379
+      RatUpAlt_0: -8648760570831302516
+      RatUpAlt_1: 781272770513037580
+      RatUpAlt_2: -4707792581104475765
+      RatUpAlt_3: 6250213214165891300
+      RatUpAlt_4: 6688269618780654229
+      RatUpAlt_5: 4714572279574462033
+      RatUpAlt_6: 1482890647189204711
+      RatUpAlt_7: -1073581849338190842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
