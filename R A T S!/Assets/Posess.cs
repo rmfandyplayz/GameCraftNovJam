@@ -7,37 +7,41 @@ public class Posess : MonoBehaviour
     private float posessTimer;
     public float posessTime;
     private Player playerScript;
-    private bool possessionOnCooldown = false;
+    private bool posessionHappening = false;
+    private RatBase ratBase;
+    public int biteDistance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerAnim = FindAnyObjectByType<Player>().GetComponent<Animator>();
         player = FindAnyObjectByType<Player>().transform;
         playerScript = FindAnyObjectByType<Player>();
+        ratBase = GetComponent<RatBase>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (posessionHappening)
+        {
         posessTimer += Time.deltaTime;
+        }
         if (posessTimer >= posessTime)
         {
             playerAnim.SetBool("Possessed", false);
+            ratBase.TakeDamage();
+            posessionHappening = false;
+        }
+        if ((player.transform.position - transform.position).magnitude <= biteDistance && !posessionHappening) 
+        {
+          posessTimer = 0;
+          Posession();  
         }
     }
     
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log(collision.gameObject.layer);
-        if (collision.gameObject.layer.Equals("Player") && !possessionOnCooldown)
-        {
-            possessionOnCooldown = true;
-            Posession();
-        }
-    }
-
     void Posession()
     {
+        posessionHappening = true;
         playerAnim.SetBool("Possessed", true);
     }
 }
