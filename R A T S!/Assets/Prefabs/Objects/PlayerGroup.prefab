@@ -237,18 +237,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6226486185976123217, guid: cbe5776bd8599ea42b25f47d8fdd108d, type: 3}
-      propertyPath: ratDist
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6226486185976123217, guid: cbe5776bd8599ea42b25f47d8fdd108d, type: 3}
-      propertyPath: hordeSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6226486185976123217, guid: cbe5776bd8599ea42b25f47d8fdd108d, type: 3}
-      propertyPath: healthPercentTrigger
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

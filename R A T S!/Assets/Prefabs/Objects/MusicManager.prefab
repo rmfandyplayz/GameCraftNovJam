@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicFadeTime: 1
-  hordeSize: 1
-  ratDist: 5
-  healthPercentTrigger: 0.6
+  hordeSize: 5
+  ratDist: 15
+  healthPercentTrigger: 0.05
 --- !u!1 &5512595078617597483
 GameObject:
   m_ObjectHideFlags: 0
