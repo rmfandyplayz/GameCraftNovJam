@@ -12,22 +12,26 @@ public class RecipeController : MonoBehaviour
 
     [SerializeField] GameObject recipeIcon;
     [SerializeField] GameObject recipeBook;
+    [SerializeField] GameObject keyBind;
 
     void Start()
     {
         recipeIcon.SetActive(true);
+        keyBind.SetActive(true);
         recipeBook.SetActive(false);
     }
 
     public void OpenIngredients()
     {
         recipeIcon.SetActive(false);
+        keyBind.SetActive(false);
         recipeBook.SetActive(true);
     }
 
     public void CloseIngredients()
     {
         recipeIcon.SetActive(true);
+        keyBind.SetActive(true);
         recipeBook.SetActive(false);
     }
 
