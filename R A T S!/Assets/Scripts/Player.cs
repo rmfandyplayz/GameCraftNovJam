@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using Vector2 = UnityEngine.Vector2;
 
 public class Player : MonoBehaviour
@@ -57,6 +58,8 @@ public class Player : MonoBehaviour
     private SpriteRenderer playerSR;
 
 
+    [SerializeField] private float beginDamageFilter;
+    private Volume dangerVolume;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,6 +70,8 @@ public class Player : MonoBehaviour
 
         lightLeft = maxLight;
         lightController = transform.Find("DisapperingLight").GetComponent<LightController>();
+
+        dangerVolume = transform.Find("DangerVolume").GetComponent<Volume>();
     }
 
     public void Damage(float amount)
@@ -96,6 +101,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dangerVolume.weight = Mathf.Clamp((beginDamageFilter - lightLeft) / beginDamageFilter,0,1);
 
         // --- Timers ---
         
