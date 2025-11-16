@@ -16,6 +16,10 @@ public class RatBase : MonoBehaviour
     [Header("Conditions")]
     public bool movingEnemy = true;
 
+    [Header("Sight")]
+    [SerializeField] private LayerMask seeCollisionMask;
+    [SerializeField] private float seeDistance;
+
     
     private PathfindingManager pathManager;
 
@@ -36,10 +40,12 @@ public class RatBase : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private Player player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pathManager = FindAnyObjectByType<PathfindingManager>();
+        player = FindAnyObjectByType<Player>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -109,7 +115,23 @@ public class RatBase : MonoBehaviour
         animator.SetBool("IsHoriz", Mathf.Abs(rb.linearVelocityX) > Mathf.Abs(rb.linearVelocityY));
         animator.SetBool("IsMoving", rb.linearVelocity.magnitude > .01f);
         spriteRenderer.flipX = rb.linearVelocityX > 0;
+        
+        //Debug.Log(CanSeePlayer());
 
+    }
+
+    public bool CanSeePlayer()
+    {
+        if ((transform.position - player.transform.position).magnitude > seeDistance)
+        {
+            return false;
+        }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position,
+            seeDistance, seeCollisionMask);
+        
+        Gizmos.DrawRay(transform.position, player.transform.position - transform.position);
+
+        return hit.collider is null;
     }
 
     private void OnDrawGizmos()
@@ -154,5 +176,11 @@ public class RatBase : MonoBehaviour
         spriteRenderer.color = defaultColor;
 
         isInvulnerable = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, seeDistance);
     }
 }

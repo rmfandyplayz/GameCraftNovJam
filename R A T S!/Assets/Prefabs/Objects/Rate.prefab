@@ -108,6 +108,11 @@ MonoBehaviour:
   Health: 2
   deathEffect: {fileID: 3170350636944301649, guid: adef9dc1f021c45668b338cafaf6e6be, type: 3}
   iFrameDuration: 0.5
+  movingEnemy: 1
+  seeCollisionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  seeDistance: 15
   maxSpeed: 5
   accel: 15
   reachedDist: 1
