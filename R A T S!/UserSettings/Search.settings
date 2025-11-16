@@ -72,6 +72,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"t:AnimationClip zmbierun"
 	"t:AnimationClip shriker"
 	"t:AnimationClip runup"
 	"t:AnimationClip posseso"
