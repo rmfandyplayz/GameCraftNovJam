@@ -7,6 +7,7 @@ using System.Collections;
 
 public class LevelSelectButton : MonoBehaviour
 {
+    private AudioSource[] sounds;
     [SerializeField] string targetScene;
 
     private bool isInteractable = true;
@@ -22,6 +23,7 @@ public class LevelSelectButton : MonoBehaviour
         DisableButtonInteractions();
         button.image.DOFade(0, 0);
         button.image.rectTransform.DOScale(0.8f, 0);
+        sounds = GetComponentsInChildren<AudioSource>();
     }
 
     public void AnimateOpening()
@@ -61,7 +63,7 @@ public class LevelSelectButton : MonoBehaviour
     {
         if (!isInteractable)
             return;
-
+        sounds[1].Play();
         DOTween.Kill(button);
 
         button.image.rectTransform.DOScale(1, animationDuration).SetEase(Ease.OutBack);
@@ -71,7 +73,7 @@ public class LevelSelectButton : MonoBehaviour
     {
         if(!isInteractable)
             return;
-
+        sounds[0].Play();
         Debug.Log("dfdf");
 
         DOTween.Kill(button);

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class CreditsButton : GenericMenuButton
 {
+    private AudioSource[] sounds;
     private bool isInteractable = true;
 
     [SerializeField] Button button;
@@ -21,15 +22,18 @@ public class CreditsButton : GenericMenuButton
     {
         SetOriginalPosition();
         menuScript = FindFirstObjectByType<MainMenu>();
+        sounds = GetComponentsInChildren<AudioSource>();
     }
 
     public override void OnClick()
     {
+        sounds[0].Play();
         throw new System.NotImplementedException();
     }
 
     public override void OnPointerEnter()
     {
+        sounds[1].Play();
         if (!isInteractable)
             return;
 

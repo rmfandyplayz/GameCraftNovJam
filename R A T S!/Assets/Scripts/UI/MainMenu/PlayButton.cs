@@ -5,6 +5,7 @@ using System.Collections;
 
 public class PlayButton : GenericMenuButton
 {
+    private AudioSource[] sounds;
     private bool isInteractable = true;
 
     [SerializeField] Button button;
@@ -22,13 +23,14 @@ public class PlayButton : GenericMenuButton
     {
         menuScript = FindFirstObjectByType<MainMenu>();
         SetOriginalPosition();
+        sounds = GetComponents<AudioSource>();
     }
 
     public override void OnClick()
     {
         if (!isInteractable)
             return;
-
+        sounds[0].Play();
         foreach(MonoBehaviour type in FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
         {
             if(type is GenericMenuButton genericButton)
@@ -48,7 +50,7 @@ public class PlayButton : GenericMenuButton
     {
         if (!isInteractable)
             return;
-
+        sounds[1].Play();
         foreach (Button b in menuScript.GetTopLevelButtons())
         {
             DOTween.Kill(b);

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ExitButton : GenericMenuButton
 {
+    private AudioSource[] sounds;
     private bool isInteractable = true;
 
     [SerializeField] Button button;
@@ -21,18 +22,21 @@ public class ExitButton : GenericMenuButton
     {
         SetOriginalPosition();
         menuScript = FindFirstObjectByType<MainMenu>();
+        sounds = GetComponentsInChildren<AudioSource>();
     }
 
     public override void OnClick()
     {
+        sounds[0].Play();
         throw new System.NotImplementedException();
     }
 
     public override void OnPointerEnter()
     {
+        
         if (!isInteractable)
             return;
-
+        sounds[1].Play();
         foreach (Button b in menuScript.GetTopLevelButtons())
         {
             DOTween.Kill(b);
