@@ -27,7 +27,7 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int ratsNear = FindObjectsByType<RatBase>(FindObjectsSortMode.None).Count(rat => (rat.transform.position - player.transform.position).magnitude < ratDist);
+        int ratsNear = FindObjectsByType<RatBase>(FindObjectsSortMode.None).Count(rat => rat.movingEnemy && (rat.transform.position - player.transform.position).magnitude < ratDist);
         float hordeMod = -1;
 
         if (ratsNear >= hordeSize)
