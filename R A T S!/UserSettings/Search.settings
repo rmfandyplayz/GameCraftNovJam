@@ -72,6 +72,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"t:Motion fadeo"
 	"t:Material shrie"
 	"t:Sprite brownr"
 ]
