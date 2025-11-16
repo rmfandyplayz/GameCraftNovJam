@@ -23,7 +23,7 @@ public class RatBase : MonoBehaviour
     
     private PathfindingManager pathManager;
 
-    private Stack<PathfindingNode> currentRoute = new();
+    public Stack<PathfindingNode> currentRoute = new();
     private PathfindingNode currentTargetedNode;
     private bool hasLoaded = false;
 
