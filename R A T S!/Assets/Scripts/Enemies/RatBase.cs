@@ -63,6 +63,11 @@ public class RatBase : MonoBehaviour
         defaultColor = spriteRenderer.color;
     }
 
+    public void CallTo(Vector3 position)
+    {
+        currentRoute = pathManager.PathfindTo(transform.position, position);
+    }
+
     void Reroute()
     {
         PathfindingNode newWanderNode = pathManager.GetRandomNode();
