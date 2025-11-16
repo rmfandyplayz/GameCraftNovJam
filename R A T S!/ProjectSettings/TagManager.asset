@@ -9,6 +9,7 @@ TagManager:
   - Spawn Point
   - Enemy
   - FoodObjective
+  - PickupHint
   layers:
   - Default
   - TransparentFX

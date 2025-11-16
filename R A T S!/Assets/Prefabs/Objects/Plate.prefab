@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5673305468039487172}
   - component: {fileID: 5456464996156911672}
+  - component: {fileID: 2776551691610430643}
   m_Layer: 0
   m_Name: JKey
-  m_TagString: Untagged
+  m_TagString: PickupHint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +88,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2776551691610430643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473225584627124543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c606bcaea9a4852bd5533981d78a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &527075147441844367
 GameObject:
   m_ObjectHideFlags: 0
