@@ -7,11 +7,11 @@ public class Player : MonoBehaviour
     // --- Internals ---
     [Header("Components")]
     public GrabbableBase heldObject;
-    private Rigidbody2D rb;
-    public Transform collidedObject;
+    private Rigidbody2D rb; 
     private Animator animator;
     private SpriteRenderer itemRenderer;
     private LightController lightController;
+    private BoxCollider2D boxCollider;
     
     // --- Movement Variables ---
     [Header("Movement")]
@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerSR = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
         hand = transform.GetChild(0);
 
         lightLeft = maxLight;
@@ -131,7 +132,7 @@ public class Player : MonoBehaviour
                 animator.SetFloat("Idle Index", 2);
                 animator.SetFloat("Run Index", 0);
                 if(itemRenderer)
-                    itemRenderer.sortingOrder = playerSR.sortingOrder + 20;
+                    itemRenderer.sortingOrder = playerSR.sortingOrder - 20;
             }
             else if (faceDir.y < 0)
             {
@@ -164,7 +165,7 @@ public class Player : MonoBehaviour
         }
 
         // --- Throwing Objects ---
-
+        
 
 
         if (dashing)
@@ -227,35 +228,29 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (isCollidingWithObject)
-            {
-                Pickup();
-            }
+            TryPickup();
         }
     }
     
-        void OnTriggerEnter2D(Collider2D collision)
+    
+    void TryPickup()
+    {
+        // Check for Pickups
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + (Vector3)boxCollider.offset, boxCollider.size, 0);
+        heldObject = null;
+        foreach (Collider2D collider in colliders)
         {
-            // --- Picking up Object
-            if (collision.CompareTag("Item") && !holdingItem)
+            if (collider.gameObject.CompareTag("Item"))
             {
-                isCollidingWithObject = true;
-                collidedObject = collision.transform.parent;
+                heldObject = collider.gameObject.GetComponent<GrabbableBase>();
+                break;
             }
         }
-    
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        // --- Picking up Object
-        if (collision.CompareTag("Item") && !holdingItem)
-        {
-            isCollidingWithObject = false;
-        }
-    }
-    
-    void Pickup()
-    {
-        heldObject = collidedObject.GetComponent<GrabbableBase>();
+
+        if (heldObject is null)
+            return;
+        
+        
         pickupCooldown = 0;
         
         Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();

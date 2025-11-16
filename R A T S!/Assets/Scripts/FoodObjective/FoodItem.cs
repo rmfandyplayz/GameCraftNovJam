@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class FoodItem : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+
+    public bool finalMeal;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
