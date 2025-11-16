@@ -77,8 +77,12 @@ public class Player : MonoBehaviour
     public void Damage(float amount)
     {
         if (iFrameTimer > 0) return;
-        
-        iFrameTimer = iFrameTime;
+        if(lightLeft <= 0)
+        {
+            FadeoutTransition.SceneTransition("DieScreen");
+            iFrameTimer = 999;
+        } else
+            iFrameTimer = iFrameTime;
         lightLeft -= amount;
     }
     

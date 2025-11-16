@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RatBase : MonoBehaviour
@@ -44,11 +45,13 @@ public class RatBase : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Player player;
+    private BoxCollider2D playerCollider;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pathManager = FindAnyObjectByType<PathfindingManager>();
         player = FindAnyObjectByType<Player>();
+        playerCollider = player.GetComponents<BoxCollider2D>().First(n => !n.isTrigger);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -155,13 +158,14 @@ public class RatBase : MonoBehaviour
 
     public bool CanSeePlayer()
     {
-        if ((transform.position - player.transform.position).magnitude > seeDistance)
+        Vector3 tryPoint = player.transform.position + (Vector3)playerCollider.offset;
+        if ((transform.position - tryPoint).magnitude > seeDistance)
         {
             //Debug.Log("Not in range");
             return false;
         }
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position,
-            (player.transform.position - transform.position).magnitude, seeCollisionMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, tryPoint - transform.position,
+            (tryPoint - transform.position).magnitude, seeCollisionMask);
         
 
         return hit.collider is null;
@@ -216,5 +220,7 @@ public class RatBase : MonoBehaviour
         
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (currentTargetedNode.transform.position - transform.position).normalized);
+        
+        Gizmos.DrawLine(transform.position, player.transform.position + (Vector3)playerCollider.offset);
     }
 }
