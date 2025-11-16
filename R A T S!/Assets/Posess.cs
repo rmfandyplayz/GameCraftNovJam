@@ -42,6 +42,7 @@ public class Posess : MonoBehaviour
     void Posession()
     {
         posessionHappening = true;
+        GetComponent<SpriteRenderer>().enabled = false;
         playerAnim.SetBool("Possessed", true);
     }
 }
