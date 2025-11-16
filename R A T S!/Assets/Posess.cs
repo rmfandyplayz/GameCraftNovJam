@@ -43,6 +43,8 @@ public class Posess : MonoBehaviour
     {
         posessionHappening = true;
         GetComponent<SpriteRenderer>().enabled = false;
+        transform.position = new Vector3(99999999, 99999999, 99999999);
+        playerScript.posessed = true;
         playerAnim.SetBool("Possessed", true);
     }
 }
