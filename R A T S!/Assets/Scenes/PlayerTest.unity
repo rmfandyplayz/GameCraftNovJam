@@ -321,7 +321,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3544340908064597600, guid: 5df27458d1de8bf4b8dd1d5070ef8536, type: 3}
       propertyPath: m_Name
-      value: ItemHandIndicator
+      value: BroomHandIndicator
       objectReference: {fileID: 0}
     - target: {fileID: 4320759809613597686, guid: 5df27458d1de8bf4b8dd1d5070ef8536, type: 3}
       propertyPath: heldObject
@@ -679,6 +679,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetPos: {x: 0, y: 0, z: 0}
   offsetRotation: 0
+  checkForThings: {x: 0, y: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  itemOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &522278002
 GameObject:
   m_ObjectHideFlags: 0
@@ -5885,7 +5890,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -5948,7 +5953,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -6280,7 +6285,6 @@ GameObject:
   - component: {fileID: 1718896562}
   - component: {fileID: 1718896560}
   - component: {fileID: 1718896559}
-  - component: {fileID: 1718896558}
   - component: {fileID: 1718896564}
   - component: {fileID: 1718896565}
   m_Layer: 0
@@ -6290,28 +6294,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1718896558
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718896557}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 0df229d9dd8aa1e408ab6c7ba313cc39, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &1718896559
 BoxCollider2D:
   m_ObjectHideFlags: 0
