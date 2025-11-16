@@ -14,7 +14,9 @@ public class Oven : MonoBehaviour
     private Light2D light;
     private float brightnessTimer;
     private float lightBright;
-
+    private AudioSource fireSound;
+    
+    
     private float cookinTimer;
     [SerializeField] private float cookTime = 10;
 
@@ -26,6 +28,8 @@ public class Oven : MonoBehaviour
         brightSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         light = brightSprite.transform.GetChild(0).GetComponent<Light2D>();
         lightBright = light.intensity;
+
+        fireSound = transform.Find("Sound").GetComponent<AudioSource>();
     }
 
     private const float brightFlicker = 0.05f;
@@ -62,6 +66,7 @@ public class Oven : MonoBehaviour
         foodRequired.Remove(item);
         Destroy(item.gameObject);
         brightnessTimer = 1;
+        fireSound.Play();
 
         if (foodRequired.Count == 1)
         {
