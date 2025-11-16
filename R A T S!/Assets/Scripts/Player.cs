@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
     public float maxLight = 100;
     [HideInInspector] public float lightLeft;
     [SerializeField] private float lightDecayPerSecond = 1;
-    public GameObject deathVolume;
 
     // --- Held Item Variables ---
     [Header("Held Items")]
@@ -48,6 +47,7 @@ public class Player : MonoBehaviour
     public float pickupCooldown;
     [SerializeField] private float iFrameTime;
     private float iFrameTimer;
+    public float posessionTimer = 1;
 
     private Vector2 movementInput;
     [HideInInspector] public Vector2 faceDir;
@@ -156,13 +156,7 @@ public class Player : MonoBehaviour
                 playerSR.color = originalColor;
             }
         }
-
-        if (lightLeft <= 6)
-        {
-            deathVolume.SetActive(true);
-        } else {
-            deathVolume.SetActive(false);
-        }
+        
 
         // --- Timers ---
         pickupCooldown += Time.deltaTime;
@@ -174,11 +168,19 @@ public class Player : MonoBehaviour
         // --- Dashing ---
         if (posessed)
         {
+            posessionTimer -= Time.deltaTime;
+            if (posessionTimer <= 0)
+            {
+                Debug.Log("Timer is 0");
+                movementInput = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
+                posessionTimer = 1;
+            }
             if (holdingItem)
             {
                 pickupCooldown = 1;
                 GrabThrow();
             }
+
         }
         if (!posessed)
         {

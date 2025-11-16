@@ -304,7 +304,6 @@ GameObject:
   m_Component:
   - component: {fileID: 258879408}
   - component: {fileID: 258879407}
-  - component: {fileID: 258879406}
   m_Layer: 0
   m_Name: Pathfinding
   m_TagString: Untagged
@@ -312,22 +311,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &258879406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258879405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e14d17b3e5c8c3e48b9a13aacf370a33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ratPrefabs:
-  - {fileID: 184846860718930128, guid: 02b5b89e4a368614b9d2db312a5d4723, type: 3}
-  spawnThreshold: 10
-  spawnDist: 0
 --- !u!114 &258879407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,33 +652,25 @@ PrefabInstance:
       propertyPath: hordeSize
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 5833371243786989765, guid: 05cf73c336d238940813032ce38b7112, type: 3}
-      propertyPath: maxLight
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 5833371243786989765, guid: 05cf73c336d238940813032ce38b7112, type: 3}
-      propertyPath: stepSound
-      value: 
-      objectReference: {fileID: 1650908336}
-    - target: {fileID: 5833371243786989765, guid: 05cf73c336d238940813032ce38b7112, type: 3}
-      propertyPath: heldObject
-      value: 
-      objectReference: {fileID: 759334649}
-    - target: {fileID: 5833371243786989765, guid: 05cf73c336d238940813032ce38b7112, type: 3}
-      propertyPath: lightDecayPerSecond
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5989427333722179432, guid: 05cf73c336d238940813032ce38b7112, type: 3}
       propertyPath: m_Name
       value: PlayerGroup
       objectReference: {fileID: 0}
+    - target: {fileID: 6123484320750252279, guid: 05cf73c336d238940813032ce38b7112, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123484320750252279, guid: 05cf73c336d238940813032ce38b7112, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.61
+      objectReference: {fileID: 0}
     - target: {fileID: 8000642636423771605, guid: 05cf73c336d238940813032ce38b7112, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.513133
+      value: -9.8
       objectReference: {fileID: 0}
     - target: {fileID: 8000642636423771605, guid: 05cf73c336d238940813032ce38b7112, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2629328
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 8000642636423771605, guid: 05cf73c336d238940813032ce38b7112, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1164,17 +1139,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1310b45a981142e7adf334e04be91f4, type: 3}
---- !u!114 &759334649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 661337304095116912, guid: a7a6d014629911949b22ae072ece3760, type: 3}
-  m_PrefabInstance: {fileID: 1667822849}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea4e52e978884e74c9701c050b060435, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &864713197
 GameObject:
   m_ObjectHideFlags: 0
@@ -8684,11 +8648,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1310b45a981142e7adf334e04be91f4, type: 3}
---- !u!82 &1650908336 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3475472079598605627, guid: 05cf73c336d238940813032ce38b7112, type: 3}
-  m_PrefabInstance: {fileID: 504446318}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1667822849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9384,8 +9343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ratPrefabs:
   - {fileID: 184846860718930128, guid: 02b5b89e4a368614b9d2db312a5d4723, type: 3}
-  spawnThreshold: 15
-  spawnDist: 12
+  spawnThreshold: 7
+  spawnDist: 19.1
 --- !u!4 &2058238289
 Transform:
   m_ObjectHideFlags: 0
