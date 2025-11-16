@@ -4,9 +4,16 @@ using UnityEngine;
 public class ServeTable : MonoBehaviour
 {
     [SerializeField] private Vector3 placedOffset;
+    private AudioSource bell;
+
+    void Start()
+    {
+        bell = GetComponent<AudioSource>();
+    }
     public void PlaceItem(FoodItem item)
     {
         item.transform.position = transform.position + placedOffset;
+        bell.Play();
         FadeoutTransition.SceneTransition("WinScreen");
     }
 
