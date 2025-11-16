@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
     public float maxLight = 100;
     [HideInInspector] public float lightLeft;
     [SerializeField] private float lightDecayPerSecond = 1;
-    public GameObject deathVolume;
 
     // --- Held Item Variables ---
     [Header("Held Items")]
@@ -156,13 +155,7 @@ public class Player : MonoBehaviour
                 playerSR.color = originalColor;
             }
         }
-
-        if (lightLeft <= 6)
-        {
-            deathVolume.SetActive(true);
-        } else {
-            deathVolume.SetActive(false);
-        }
+        
 
         // --- Timers ---
         pickupCooldown += Time.deltaTime;

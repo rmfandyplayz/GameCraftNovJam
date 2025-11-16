@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c892cb22cf2fbb74f9db0e5880f32b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicFadeTime: 1
-  hordeSize: 5
+  musicFadeTime: 0.3
+  hordeSize: 4
   ratDist: 15
-  healthPercentTrigger: 0.05
+  healthPercentTrigger: 0.18181819
 --- !u!1 &5512595078617597483
 GameObject:
   m_ObjectHideFlags: 0
