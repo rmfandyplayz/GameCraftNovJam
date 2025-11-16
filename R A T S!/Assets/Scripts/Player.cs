@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     [Header("Held Items")]
     public float throwSpeed;
     private bool holdingItem => heldObject != null;
+    private GrabbableBase pickupCandidate;   // item we can currently pick up
+
 
     [Header("Timers")]
     // --- Timers ---
@@ -151,7 +153,7 @@ public void Dash()
             {
                 playerSR.color = originalColor;
             }
-    }
+        }
 
         pickupCooldown += Time.deltaTime;
         iFrameTimer -= Time.deltaTime;
@@ -225,22 +227,21 @@ public void Dash()
         }
 
         // --- Throwing Objects ---
-        
-
-
         if (dashing)
         {
             ghostTimer += Time.deltaTime;
-        if (ghostTimer >= ghostInterval)
-        {
-            ghostTimer = 0f;
-            SpawnGhost();
+            if (ghostTimer >= ghostInterval)
+            {
+                ghostTimer = 0f;
+                SpawnGhost();
+            }
         }
-    }
-    else
-    {
-        ghostTimer = 0f; // reset when dash ends
-    }
+        else
+        {
+            ghostTimer = 0f; // reset when dash ends
+        }
+
+        UpdatePickupCandidate();
     }
 
     public int GetFacingIndex()
@@ -310,7 +311,9 @@ public void Dash()
         if (heldObject is null)
             return;
         
-        
+        SetPickupIndicator(heldObject, false);
+        pickupCandidate = null;
+
         pickupCooldown = 0;
         
         Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
@@ -337,6 +340,55 @@ public void Dash()
 
         Destroy(g, ghostLifetime);
     }
+
+    private void SetPickupIndicator(GrabbableBase target, bool state)
+    {
+        if (target == null) return;
+
+        // Assuming the indicator is the first child of the item
+        if (target.transform.childCount > 0)
+        {
+            Transform child = target.transform.GetChild(0);
+            if (child != null)
+                child.gameObject.SetActive(state);
+        }
+    }
+
+    private void UpdatePickupCandidate()
+{
+    // Turn off old indicator first
+    if (pickupCandidate != null)
+    {
+        SetPickupIndicator(pickupCandidate, false);
+        pickupCandidate = null;
+    }
+
+    // If we’re already holding something, no candidates
+    if (holdingItem)
+        return;
+
+    // Same OverlapBox you use in TryPickup
+    Collider2D[] colliders = Physics2D.OverlapBoxAll(
+        transform.position + (Vector3)boxCollider.offset,
+        boxCollider.size,
+        0f
+    );
+
+    foreach (Collider2D collider in colliders)
+    {
+        if (collider.gameObject.CompareTag("Item"))
+        {
+            pickupCandidate = collider.gameObject.GetComponent<GrabbableBase>();
+            break;
+        }
+    }
+
+    // Turn on indicator for the new candidate (if any)
+    if (pickupCandidate != null)
+    {
+        SetPickupIndicator(pickupCandidate, true);
+    }
+}
 
 }
 
