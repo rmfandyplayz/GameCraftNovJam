@@ -166,9 +166,20 @@ public class RatBase : MonoBehaviour
         rb.AddForce(distance.normalized * (accel * Time.deltaTime * rb.mass), ForceMode2D.Impulse);
         rb.linearVelocity = rb.linearVelocity.normalized * Mathf.Min(rb.linearVelocity.magnitude, maxSpeed);
         
-        animator.SetBool("IsHoriz", Mathf.Abs(rb.linearVelocityX) > Mathf.Abs(rb.linearVelocityY));
-        animator.SetBool("IsMoving", rb.linearVelocity.magnitude > .01f);
+        //animator.SetBool("IsHoriz", Mathf.Abs(rb.linearVelocityX) > Mathf.Abs(rb.linearVelocityY));
+        //animator.SetBool("IsMoving", rb.linearVelocity.magnitude > .01f);
         spriteRenderer.flipX = rb.linearVelocityX > 0;
+
+        if (Mathf.Abs(rb.linearVelocityX) > Mathf.Abs(rb.linearVelocityY))
+        {
+            animator.SetFloat("YMove", 0);
+            animator.SetFloat("XMove", Mathf.Sign(rb.linearVelocityX));
+        }
+        else
+        {
+            animator.SetFloat("XMove", 0);
+            animator.SetFloat("YMove", Mathf.Sign(rb.linearVelocityY));
+        }
         
         //Debug.Log(CanSeePlayer());
 

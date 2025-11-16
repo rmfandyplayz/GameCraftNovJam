@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 2ed615a84adb649a784d0fea56002c89
+guid: ae56007a0c12ace49be316efed9fda1c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2217581310910974929
-    second: RatBrownAndGreyRunUp_0
+      213: 3763051751079166532
+    second: RatZombieKingRunBack_0
   - first:
-      213: -1875719423616890751
-    second: RatBrownAndGreyRunUp_1
+      213: -6566552212601469024
+    second: RatZombieKingRunBack_1
   - first:
-      213: 1868350471900093686
-    second: RatBrownAndGreyRunUp_2
+      213: -4135700798264678430
+    second: RatZombieKingRunBack_2
   - first:
-      213: 4506808362574612807
-    second: RatBrownAndGreyRunUp_3
+      213: 5914625270804321415
+    second: RatZombieKingRunBack_3
   - first:
-      213: 9050548601285346842
-    second: RatBrownAndGreyRunUp_4
+      213: -6485779287584879336
+    second: RatZombieKingRunBack_4
   - first:
-      213: -652170396881726988
-    second: RatBrownAndGreyRunUp_5
+      213: -6303788496554047551
+    second: RatZombieKingRunBack_5
   - first:
-      213: 7422173701332712007
-    second: RatBrownAndGreyRunUp_6
+      213: -1375599420590909006
+    second: RatZombieKingRunBack_6
   - first:
-      213: 6045221200900074379
-    second: RatBrownAndGreyRunUp_7
+      213: -2213458390653123523
+    second: RatZombieKingRunBack_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_0
+      name: RatZombieKingRunBack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -149,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1dbc469f37e66ce10800000000000000
-      internalID: 2217581310910974929
+      spriteID: 4424c7e41ab093430800000000000000
+      internalID: 3763051751079166532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_1
+      name: RatZombieKingRunBack_1
       rect:
         serializedVersion: 2
         x: 11
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 188c3094f1b18f5e0800000000000000
-      internalID: -1875719423616890751
+      spriteID: 0a785d0cd8beed4a0800000000000000
+      internalID: -6566552212601469024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_2
+      name: RatZombieKingRunBack_2
       rect:
         serializedVersion: 2
         x: 22
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6fcd981fad6bde910800000000000000
-      internalID: 1868350471900093686
+      spriteID: 2e7622e290a0b96c0800000000000000
+      internalID: -4135700798264678430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_3
+      name: RatZombieKingRunBack_3
       rect:
         serializedVersion: 2
         x: 0
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7490502e3566b8e30800000000000000
-      internalID: 4506808362574612807
+      spriteID: 78417d5c858f41250800000000000000
+      internalID: 5914625270804321415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_4
+      name: RatZombieKingRunBack_4
       rect:
         serializedVersion: 2
         x: 11
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a16850240020a9d70800000000000000
-      internalID: 9050548601285346842
+      spriteID: 81dcaefd912edf5a0800000000000000
+      internalID: -6485779287584879336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_5
+      name: RatZombieKingRunBack_5
       rect:
         serializedVersion: 2
         x: 22
@@ -259,14 +259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f1d6d8ba7603f6f0800000000000000
-      internalID: -652170396881726988
+      spriteID: 1c7c3b3e2c17488a0800000000000000
+      internalID: -6303788496554047551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_6
+      name: RatZombieKingRunBack_6
       rect:
         serializedVersion: 2
         x: 0
@@ -281,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 74abe2138abd00760800000000000000
-      internalID: 7422173701332712007
+      spriteID: 2b9127e7d93e8ece0800000000000000
+      internalID: -1375599420590909006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RatBrownAndGreyRunUp_7
+      name: RatZombieKingRunBack_7
       rect:
         serializedVersion: 2
         x: 11
@@ -303,8 +303,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b8b2f4c37a0f4e350800000000000000
-      internalID: 6045221200900074379
+      spriteID: d34430432573841e0800000000000000
+      internalID: -2213458390653123523
       vertices: []
       indices: 
       edges: []
@@ -313,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6bf57d455e88e26448fcb732dcadcc4b
+    spriteID: f7eb59f280eb1bc4193d9387074057cc
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RatBrownAndGreyRunUp_0: 2217581310910974929
-      RatBrownAndGreyRunUp_1: -1875719423616890751
-      RatBrownAndGreyRunUp_2: 1868350471900093686
-      RatBrownAndGreyRunUp_3: 4506808362574612807
-      RatBrownAndGreyRunUp_4: 9050548601285346842
-      RatBrownAndGreyRunUp_5: -652170396881726988
-      RatBrownAndGreyRunUp_6: 7422173701332712007
-      RatBrownAndGreyRunUp_7: 6045221200900074379
+      RatZombieKingRunBack_0: 3763051751079166532
+      RatZombieKingRunBack_1: -6566552212601469024
+      RatZombieKingRunBack_2: -4135700798264678430
+      RatZombieKingRunBack_3: 5914625270804321415
+      RatZombieKingRunBack_4: -6485779287584879336
+      RatZombieKingRunBack_5: -6303788496554047551
+      RatZombieKingRunBack_6: -1375599420590909006
+      RatZombieKingRunBack_7: -2213458390653123523
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
