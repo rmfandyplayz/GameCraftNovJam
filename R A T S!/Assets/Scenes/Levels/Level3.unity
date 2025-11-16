@@ -10468,8 +10468,8 @@ MonoBehaviour:
   - {fileID: 184846860718930128, guid: 02b5b89e4a368614b9d2db312a5d4723, type: 3}
   - {fileID: 184846860718930128, guid: 02b5b89e4a368614b9d2db312a5d4723, type: 3}
   - {fileID: 184846860718930128, guid: 02b5b89e4a368614b9d2db312a5d4723, type: 3}
-  spawnThreshold: 1
-  spawnDist: 14
+  spawnThreshold: 4
+  spawnDist: 20
 --- !u!4 &2058238289
 Transform:
   m_ObjectHideFlags: 0
