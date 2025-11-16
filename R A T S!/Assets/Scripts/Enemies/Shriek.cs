@@ -50,7 +50,7 @@ public class Shriek : MonoBehaviour
             eyeTransform.localPosition.y,
             0
         );
-        Debug.Log(ratBase.CanSeePlayer());
+       // Debug.Log(ratBase.CanSeePlayer());
         if (ratBase.CanSeePlayer())
         {
             anim.SetBool("inShriekingDistance", true);
