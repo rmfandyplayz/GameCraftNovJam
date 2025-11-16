@@ -526,6 +526,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2903502459458935053, guid: 05cf73c336d238940813032ce38b7112, type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5833371243786989765, guid: 05cf73c336d238940813032ce38b7112, type: 3}
       propertyPath: maxLight
       value: 125
