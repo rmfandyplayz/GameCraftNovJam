@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     public float dashMultiplier = 3;
     private Transform hand;
 
+    [Header("Sound Effects")]
+    public AudioSource stepSound;
+
     // HP
     [Header("Light")]
     public float maxLight = 100;
@@ -331,7 +334,12 @@ public class Player : MonoBehaviour
 
         Destroy(g, ghostLifetime);
     }
-
+    public void PlayStepSound()
+    {
+    if (stepSound == null) return;
+    stepSound.Stop();
+    stepSound.Play();
+    }
     // Turn indicator child on/off for a given item
     private void SetPickupIndicator(GrabbableBase target, bool state)
     {
