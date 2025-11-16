@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110106451694624336}
   - component: {fileID: 3594793732552289214}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6251880956276312404}
   - component: {fileID: 3152914804049089520}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 3681230227349502491}
   - component: {fileID: 8248600202036418611}
   - component: {fileID: 5319911145952144387}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Posessor
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6392482722278272137}
   - component: {fileID: 577087819058691020}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: rat_yelp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1950812227771868279}
   - component: {fileID: 5406838188323898833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: lightDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -307,6 +307,18 @@ PrefabInstance:
       propertyPath: m_LightVolumeEnabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6222408351059856262, guid: 5df27458d1de8bf4b8dd1d5070ef8536, type: 3}
+      propertyPath: m_Anchor.y
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222408351059856262, guid: 5df27458d1de8bf4b8dd1d5070ef8536, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -7.674925
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222408351059856262, guid: 5df27458d1de8bf4b8dd1d5070ef8536, type: 3}
+      propertyPath: m_UseConnectedAnchor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9167567644920734055, guid: 5df27458d1de8bf4b8dd1d5070ef8536, type: 3}
       propertyPath: m_Name
       value: Player

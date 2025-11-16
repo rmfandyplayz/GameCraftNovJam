@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2054757256909099206}
   - component: {fileID: 3522645583470466847}
   - component: {fileID: 1399905372620684047}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ZombieRat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 951392890741062669}
   - component: {fileID: 8094104180384060453}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: rat_yelp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7076411705422441579}
   - component: {fileID: 3870303479215086290}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3887464075710330360}
   - component: {fileID: 6485996101671450337}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017617037144974755}
   - component: {fileID: 3876714381623203105}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: lightDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

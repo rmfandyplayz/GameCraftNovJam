@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float beginDamageFilter;
     private Volume dangerVolume;
 
+    private SpriteRenderer lanternSprite;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -76,6 +78,8 @@ public class Player : MonoBehaviour
         lightController = transform.Find("DisapperingLight").GetComponent<LightController>();
 
         dangerVolume = transform.Find("DangerVolume").GetComponent<Volume>();
+
+        lanternSprite = transform.Find("Lantern").GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     public void Damage(float amount)
@@ -225,6 +229,7 @@ public class Player : MonoBehaviour
             {
                 animator.SetFloat("Idle Index", 2);
                 animator.SetFloat("Run Index", 0);
+                lanternSprite.sortingOrder = playerSR.sortingOrder - 20;
                 if (itemRenderer)
                     itemRenderer.sortingOrder = playerSR.sortingOrder - 20;
             }
@@ -232,6 +237,7 @@ public class Player : MonoBehaviour
             {
                 animator.SetFloat("Idle Index", 1);
                 animator.SetFloat("Run Index", 1);
+                lanternSprite.sortingOrder = playerSR.sortingOrder + 20;
                 if (itemRenderer)
                     itemRenderer.sortingOrder = playerSR.sortingOrder + 20;
             }
@@ -239,6 +245,7 @@ public class Player : MonoBehaviour
             {
                 animator.SetFloat("Idle Index", 3);
                 animator.SetFloat("Run Index", 3);
+                lanternSprite.sortingOrder = playerSR.sortingOrder + 20;
                 if (itemRenderer)
                     itemRenderer.sortingOrder = playerSR.sortingOrder - 20;
             }
@@ -246,6 +253,7 @@ public class Player : MonoBehaviour
             {
                 animator.SetFloat("Idle Index", 0);
                 animator.SetFloat("Run Index", 2);
+                lanternSprite.sortingOrder = playerSR.sortingOrder - 20;
                 if (itemRenderer)
                     itemRenderer.sortingOrder = playerSR.sortingOrder + 20;
             }
@@ -258,6 +266,12 @@ public class Player : MonoBehaviour
                 hand.position + Quaternion.Euler(0, 0, heldObject.offsetRotation) * heldObject.offsetPos;
             heldObject.transform.rotation = Quaternion.Euler(0, 0, heldObject.offsetRotation);
         }
+
+        lanternSprite.transform.parent.localPosition = new Vector3(
+            -hand.transform.localPosition.x,
+            lanternSprite.transform.parent.localPosition.y,
+            0
+        );
 
         // --- Dash Ghost ---
         if (dashing)

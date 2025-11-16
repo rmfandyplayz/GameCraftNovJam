@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6937118100874102494}
   - component: {fileID: 4938797851300388853}
   - component: {fileID: 6120550232255971892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 372389626314698218}
   - component: {fileID: 3607739628863684707}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: lightDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 3358739550270872673}
   - component: {fileID: 8178875697181916566}
   - component: {fileID: 4275000635063241010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shrieker
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -408,6 +408,8 @@ MonoBehaviour:
   Health: 2
   deathEffect: {fileID: 3170350636944301649, guid: adef9dc1f021c45668b338cafaf6e6be, type: 3}
   iFrameDuration: 0.5
+  attack: {fileID: 0}
+  hurt: {fileID: 0}
   movingEnemy: 1
   seeCollisionMask:
     serializedVersion: 2
@@ -538,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6752137632873376938}
   - component: {fileID: 6333294246531982860}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,6 +698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scream Particle
       objectReference: {fileID: 0}
+    - target: {fileID: 7290568747241561739, guid: cec6525dcfe86421ab354757a318015d, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7368907351044320713, guid: cec6525dcfe86421ab354757a318015d, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -703,6 +709,10 @@ PrefabInstance:
     - target: {fileID: 7687884239951027649, guid: cec6525dcfe86421ab354757a318015d, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423942451290423609, guid: cec6525dcfe86421ab354757a318015d, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
