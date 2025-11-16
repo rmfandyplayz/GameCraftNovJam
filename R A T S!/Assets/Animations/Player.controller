@@ -108,7 +108,7 @@ BlendTree:
   m_Name: Possesed Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 5484002e8fdacee4f8ede8cf0e2aa7b7, type: 2}
+    m_Motion: {fileID: 7400000, guid: 79d864d03e2ace04183f093033504b7e, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -116,7 +116,7 @@ BlendTree:
     m_DirectBlendParameter: Idle Index
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 79d864d03e2ace04183f093033504b7e, type: 2}
+    m_Motion: {fileID: 7400000, guid: be9c466f22414b445a4150b01e2a1fb0, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -124,7 +124,7 @@ BlendTree:
     m_DirectBlendParameter: Idle Index
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: be9c466f22414b445a4150b01e2a1fb0, type: 2}
+    m_Motion: {fileID: 7400000, guid: 5484002e8fdacee4f8ede8cf0e2aa7b7, type: 2}
     m_Threshold: 2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -139,7 +139,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Idle Index
     m_Mirror: 0
-  m_BlendParameter: Idle Index
+  m_BlendParameter: Run Index
   m_BlendParameterY: Idle Index
   m_MinThreshold: 0
   m_MaxThreshold: 3
@@ -440,7 +440,7 @@ AnimatorStateMachine:
     m_Position: {x: 1220, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4043311429800690711}
-    m_Position: {x: -90, y: 0, z: 0}
+    m_Position: {x: -200, y: -30, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
@@ -519,12 +519,6 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Run Index
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Possessed Index
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0

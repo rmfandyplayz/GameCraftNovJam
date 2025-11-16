@@ -48,7 +48,7 @@ public class RatBase : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     [HideInInspector] public SpriteRenderer spriteRenderer;
-    private Player player;
+    protected Player player;
     private BoxCollider2D playerCollider;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -84,6 +84,17 @@ public class RatBase : MonoBehaviour
         currentTargetedNode = currentRoute.Pop();
     }
 
+    public virtual void Attack()
+    {
+        player.Damage(damage);
+        if (movingEnemy)
+        {
+            attack.Play();
+        }   
+        //slight shake when dealing damage
+        FindAnyObjectByType<PlayerCamera>().ShakeCamera(0.03f, 0.1f);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -93,15 +104,7 @@ public class RatBase : MonoBehaviour
             if ((player.transform.position - transform.position).magnitude <= biteDistance)
             {
                 //player hurt
-                player.Damage(damage);
-                
-                if (movingEnemy == true)
-                {
-                    attack.Play();
-                }   
-
-                //slight shake when dealing damage
-                FindAnyObjectByType<PlayerCamera>().ShakeCamera(0.03f, 0.1f);
+                Attack();
             }
         }
         else

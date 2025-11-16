@@ -9,7 +9,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"picker_window_position_offset.075BCD15" = "76;134;520;550"
+	"picker_window_position_offset.075BCD15" = "-168;134;520;550"
 	"picker_visibility_flags.075BCD15" = "264"
 	"picker_item_size.075BCD15" = "0"
 	"picker_inspector.075BCD15" = "0"
@@ -72,6 +72,9 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"t:AudioSource rat_yel"
+	"t:AudioSource attack"
+	"t:GameObject rat deat"
 	"t:Sprite table"
 	"t:Motion fadeo"
 	"t:Material shrie"
