@@ -43,7 +43,7 @@ public class RatBase : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
     private Player player;
     private BoxCollider2D playerCollider;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
