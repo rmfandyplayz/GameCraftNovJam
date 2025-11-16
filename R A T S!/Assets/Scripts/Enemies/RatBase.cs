@@ -13,6 +13,9 @@ public class RatBase : MonoBehaviour
     private bool isInvulnerable = false;
     private Color defaultColor;
 
+    [Header("Conditions")]
+    public bool movingEnemy = true;
+
     
     private PathfindingManager pathManager;
 
@@ -68,6 +71,11 @@ public class RatBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (movingEnemy == false)
+        {
+            return;
+        }
+
         if (!hasLoaded)
         {
             hasLoaded = true;
