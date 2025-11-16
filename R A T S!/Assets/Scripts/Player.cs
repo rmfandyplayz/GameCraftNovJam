@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private bool dashOnCooldown;
     public float dashMultiplier = 3;
     private Transform hand;
+    public bool posessed = false;
 
     [Header("Sound Effects")]
     public AudioSource stepSound;
@@ -132,6 +133,10 @@ public class Player : MonoBehaviour
 
     public void MoveInput(InputAction.CallbackContext context)
     {
+        if (posessed)
+        {
+            return;
+        }
         movementInput = context.ReadValue<Vector2>();
         if (movementInput.magnitude != 0)
             faceDir = movementInput;
@@ -167,6 +172,16 @@ public class Player : MonoBehaviour
         lightController.lightAmount = 1 - (lightLeft / maxLight);
 
         // --- Dashing ---
+        if (posessed)
+        {
+            if (holdingItem)
+            {
+                pickupCooldown = 1;
+                GrabThrow();
+            }
+        }
+        if (!posessed)
+        {
         if (dashOnCooldown)
         {
             dashTimer += Time.deltaTime;
@@ -182,11 +197,12 @@ public class Player : MonoBehaviour
         }
 
         // --- Movement ---
+        
         if (!dashing)
         {
             rb.linearVelocity = movementInput * force;
         }
-
+        }
         // --- Movement Animation Info ---
         // --- Movement Animation Info ---
     bool isMoving = rb.linearVelocityX != 0 || rb.linearVelocityY != 0;
