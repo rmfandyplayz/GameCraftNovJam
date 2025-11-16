@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class LevelSelectButton : GenericMenuButton
+public class LevelSelectButton : MonoBehaviour
 {
     [SerializeField] string targetScene;
 
@@ -16,7 +16,7 @@ public class LevelSelectButton : GenericMenuButton
     const float animationDuration = 0.35f;
     
 
-    public override void OnPointerEnter()
+    public void OnPointerEnter()
     {
         if (!isInteractable)
             return;
@@ -26,7 +26,7 @@ public class LevelSelectButton : GenericMenuButton
         button.image.rectTransform.DOScale(scaleUpSize, animationDuration).SetEase(Ease.OutBack);
     }
 
-    public override void OnPointerExit()
+    public void OnPointerExit()
     {
         if (!isInteractable)
             return;
@@ -36,20 +36,20 @@ public class LevelSelectButton : GenericMenuButton
         button.image.rectTransform.DOScale(1, animationDuration).SetEase(Ease.OutBack);
     }
 
-    public override void OnClick()
+    public void OnClick()
     {
         
     }
 
 
 
-    public override void DisableButtonInteractions()
+    public void DisableButtonInteractions()
     {
         isInteractable = false;
         button.interactable = false;
     }
 
-    public override void EnableButtonInteractions()
+    public void EnableButtonInteractions()
     {
         isInteractable = true;
         button.interactable = true;
