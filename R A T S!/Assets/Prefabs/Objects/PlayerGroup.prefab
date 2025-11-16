@@ -117,7 +117,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -236,6 +236,18 @@ PrefabInstance:
     - target: {fileID: 4699965077800292402, guid: cbe5776bd8599ea42b25f47d8fdd108d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226486185976123217, guid: cbe5776bd8599ea42b25f47d8fdd108d, type: 3}
+      propertyPath: ratDist
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226486185976123217, guid: cbe5776bd8599ea42b25f47d8fdd108d, type: 3}
+      propertyPath: hordeSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226486185976123217, guid: cbe5776bd8599ea42b25f47d8fdd108d, type: 3}
+      propertyPath: healthPercentTrigger
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
