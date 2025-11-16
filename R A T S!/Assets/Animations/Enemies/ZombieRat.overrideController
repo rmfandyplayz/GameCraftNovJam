@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ZombieRat
+  m_Controller: {fileID: 9100000, guid: 385c7c94ed4287443a462f00cba7c0c1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 43061dea580893f4fa64314508456c41, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 892276136adf0493cbc771b4486c1e3a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 64c5d3e2a40f56943b6db5f4eef10410, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7224161accfe94aa18cdb87f1d89e03e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 59d6a32628bd9c747b48bf352a850bdd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 29a1ff3c821d0437eaa4df38253f650b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 75a9ead9d2a6934499df4789bb7daa3a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a37f15a282b494176a608e03a55bf165, type: 2}
