@@ -21,26 +21,25 @@ public class Shriek : MonoBehaviour
         if (ratBase.CanSeePlayer())
         {
             anim.SetBool("inShriekingDistance", true);
-            ratBase.movingEnemy = false;
-            Summon();
         }
         else 
         {
             anim.SetBool("inShriekingDistance", false);
-            ratBase.movingEnemy = true;
         }
     }
 
     public void LockAnimation()
     {
         anim.SetBool("CanSwitch", false);
+        ratBase.movingEnemy = false;
     }
 
     public void UnlockAnimation()
     {
         anim.SetBool("CanSwitch", true);
+        ratBase.movingEnemy = true;
     }
-    void Summon()
+    public void Summon()
     {
        GameObject[] rats = GameObject.FindGameObjectsWithTag("Enemy");
        foreach(GameObject rat in rats)
