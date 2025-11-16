@@ -97,6 +97,10 @@ public class Oven : MonoBehaviour
         {
             cookinTimer += Time.deltaTime;
             GetComponent<Animator>().SetTrigger("Progress");
+            foreach (RatBase rat in FindObjectsByType<RatBase>(FindObjectsSortMode.None))
+            {
+                rat.CallTo(transform.position);
+            }
         }
     }
 

@@ -73,17 +73,14 @@ public class Shriek : MonoBehaviour
         ratBase.movingEnemy = true;
     }
     public void Summon()
-    {
-        shriekParticleA.Play();
-        shriekParticleB.Play();
-        shriekSound.Play();
-       GameObject[] ratObjects = GameObject.FindGameObjectsWithTag("Enemy");
-       rats = new RatBase[ratObjects.Length];
-       for (int i = 0; i < ratObjects.Length; i++)
-        {
-            rats[i] = ratObjects[i].GetComponent<RatBase>();
-            rats[i].currentRoute = pathFinder.PathfindTo(rats[i].transform.position, player.position);
-        }
+    { 
+        shriekParticleA.Play(); 
+        shriekParticleB.Play(); 
+        shriekSound.Play(); 
+       foreach (RatBase rat in FindObjectsByType<RatBase>(FindObjectsSortMode.None))
+       {
+           rat.CallTo(player.position);
+       }
     }
     
     
