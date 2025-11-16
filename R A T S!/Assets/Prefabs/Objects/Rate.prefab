@@ -116,7 +116,7 @@ MonoBehaviour:
   maxSpeed: 5
   accel: 15
   reachedDist: 1
-  biteDistance: 0.5
+  biteDistance: 1
   damage: 5
   maxStuckTime: 1
   maxStuckSpeed: 0.5
