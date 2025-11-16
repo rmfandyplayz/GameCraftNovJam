@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     private float dashTimer;
     public float dashCooldownTime;
     public float pickupCooldown;
+    [SerializeField] private float iFrameTime;
+    private float iFrameTimer;
 
     private bool isCollidingWithObject;
 
@@ -69,6 +71,9 @@ public class Player : MonoBehaviour
 
     public void Damage(float amount)
     {
+        if (iFrameTimer > 0) return;
+        
+        iFrameTimer = iFrameTime;
         lightLeft -= amount;
     }
     
@@ -95,6 +100,7 @@ public class Player : MonoBehaviour
         // --- Timers ---
         
         pickupCooldown += Time.deltaTime;
+        iFrameTimer -= Time.deltaTime;
 
         lightLeft -= Time.deltaTime * lightDecayPerSecond;
         lightController.lightAmount = 1 - (lightLeft / maxLight);

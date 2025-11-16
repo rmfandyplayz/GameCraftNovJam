@@ -276,6 +276,7 @@ MonoBehaviour:
   dashTime: 0.13
   dashCooldownTime: 0.3
   pickupCooldown: 0.4
+  iFrameTime: 0.5
   faceDir: {x: 0, y: 0}
   ghostSprite: {fileID: 21300000, guid: aaac5b433f395449388c35cca625b822, type: 3}
   ghostColor: {r: 0.4999555, g: 0.9289992, b: 0.990566, a: 0.36078432}

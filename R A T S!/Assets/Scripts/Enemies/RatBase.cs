@@ -26,12 +26,15 @@ public class RatBase : MonoBehaviour
     public Stack<PathfindingNode> currentRoute = new();
     private PathfindingNode currentTargetedNode;
     private bool hasLoaded = false;
+    private Vector3? overridePos = null;
 
     private Vector3 goalPos;
 
     [SerializeField] private float maxSpeed;
     [SerializeField] private float accel;
     [SerializeField] private float reachedDist = .01f;
+    [SerializeField] private float biteDistance;
+    [SerializeField] private float damage;
 
     private float stuckTimer = 0;
     [SerializeField] private float maxStuckTime;
@@ -77,6 +80,23 @@ public class RatBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (CanSeePlayer())
+        {
+            overridePos = player.transform.position;
+            if ((player.transform.position - transform.position).magnitude <= biteDistance)
+            {
+                player.Damage(damage);
+            }
+        }
+        else
+        {
+            if (overridePos is not null)
+            {
+                currentRoute = pathManager.PathfindTo(transform.position, (Vector3)overridePos);
+            }
+            overridePos = null;
+        }
+        
         if (movingEnemy == false)
         {
             rb.linearVelocity = new Vector2(0,0);
@@ -88,14 +108,23 @@ public class RatBase : MonoBehaviour
             hasLoaded = true;
             Reroute();
         }
-        Vector3 distance = currentTargetedNode.transform.position - transform.position;
-        if (distance.magnitude <= reachedDist)
+
+        Vector3 distance;
+        if(overridePos is null) 
+            distance = currentTargetedNode.transform.position - transform.position;
+        else
+        {
+            distance = (Vector3)overridePos - transform.position;
+        }
+            
+        
+        if (distance.magnitude <= reachedDist && overridePos is null)
         {
             ReachedNode();
             // is this framerate dependent? yes. do i care? now
             return;
         }
-        if (rb.linearVelocity.magnitude <= maxStuckSpeed)
+        if (rb.linearVelocity.magnitude <= maxStuckSpeed && overridePos is null)
         {
             stuckTimer += Time.deltaTime;
             if (stuckTimer > maxStuckTime)
@@ -125,28 +154,18 @@ public class RatBase : MonoBehaviour
     {
         if ((transform.position - player.transform.position).magnitude > seeDistance)
         {
+            //Debug.Log("Not in range");
             return false;
         }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position,
-            seeDistance, seeCollisionMask);
+            (player.transform.position - transform.position).magnitude, seeCollisionMask);
+        
 
         return hit.collider is null;
     }
 
     private void OnDrawGizmos()
     {
-        if (currentTargetedNode is null)
-        {
-            return;
-        }
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawLine(transform.position, goalPos);
-        
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, currentTargetedNode.transform.position);
-        
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (currentTargetedNode.transform.position - transform.position).normalized);
     }
 
     public void TakeDamage()
@@ -181,5 +200,18 @@ public class RatBase : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, seeDistance);
+        
+        if (currentTargetedNode is null)
+        {
+            return;
+        }
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(transform.position, goalPos);
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, currentTargetedNode.transform.position);
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (currentTargetedNode.transform.position - transform.position).normalized);
     }
 }

@@ -116,6 +116,8 @@ MonoBehaviour:
   maxSpeed: 5
   accel: 15
   reachedDist: 1
+  biteDistance: 0.5
+  damage: 5
   maxStuckTime: 1
   maxStuckSpeed: 0.5
 --- !u!50 &3810783139858822448
@@ -140,7 +142,7 @@ Rigidbody2D:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1280
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
