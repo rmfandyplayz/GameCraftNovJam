@@ -72,6 +72,8 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"t:Sprite cooking"
+	"t:Sprite thought"
 	"t:AudioSource rat_yel"
 	"t:AudioSource attack"
 	"t:GameObject rat deat"

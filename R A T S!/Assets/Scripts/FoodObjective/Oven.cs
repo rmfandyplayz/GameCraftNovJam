@@ -15,11 +15,17 @@ public class Oven : MonoBehaviour
     private float brightnessTimer;
     private float lightBright;
     private AudioSource fireSound;
+
+    private GameObject ingredientTemplate;
     
     
     private float cookinTimer;
     [SerializeField] private float cookTime = 10;
 
+    [SerializeField] private int ColumnNum;
+    [SerializeField] private Vector2 ingredientOffset;
+
+    private Dictionary<FoodItem, GameObject> ingredients = new();
 
     private void Start()
     {
@@ -30,6 +36,24 @@ public class Oven : MonoBehaviour
         lightBright = light.intensity;
 
         fireSound = transform.Find("Sound").GetComponent<AudioSource>();
+
+        ingredientTemplate = transform.Find("ThoughtBubble").GetChild(0).gameObject;
+        int j = 0;
+        foreach (FoodItem item in foodRequired.Where(item => !item.finalMeal))
+        {
+            GameObject newListing = Instantiate(ingredientTemplate);
+            int columnPos = j % ColumnNum;
+            int rowPos = j / ColumnNum;
+            newListing.transform.position = ingredientTemplate.transform.position + new Vector3(
+                ingredientOffset.x * columnPos,
+                ingredientOffset.y * rowPos,
+                0
+            );
+            newListing.GetComponent<SpriteRenderer>().sprite = item.GetComponent<SpriteRenderer>().sprite;
+            ingredients.Add(item, newListing);
+            j++;
+        }
+        Destroy(ingredientTemplate);
     }
 
     private const float brightFlicker = 0.05f;
@@ -50,7 +74,7 @@ public class Oven : MonoBehaviour
             if (cookinTimer > cookTime)
             {
                 transform.GetChild(1).gameObject.SetActive(true);
-                GetComponent<Animator>().SetTrigger("Spit");
+                GetComponent<Animator>().SetTrigger("Progress");
                 cookinTimer = 0;
             }
         }
@@ -64,6 +88,7 @@ public class Oven : MonoBehaviour
     public void StoreItem(FoodItem item)
     {
         foodRequired.Remove(item);
+        Destroy(ingredients[item]);
         Destroy(item.gameObject);
         brightnessTimer = 1;
         fireSound.Play();
@@ -71,6 +96,23 @@ public class Oven : MonoBehaviour
         if (foodRequired.Count == 1)
         {
             cookinTimer += Time.deltaTime;
+            GetComponent<Animator>().SetTrigger("Progress");
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        ingredientTemplate = transform.Find("ThoughtBubble").GetChild(0).gameObject;
+        Gizmos.color = Color.black;
+        for (int i = 0; i < 6; i++)
+        {
+            int columnPos = i % ColumnNum;
+            int rowPos = i / ColumnNum;
+            Gizmos.DrawWireCube(ingredientTemplate.transform.position + new Vector3(
+                ingredientOffset.x * columnPos,
+                ingredientOffset.y * rowPos,
+                0
+            ), new Vector3(0.5f,.5f,.5f));
         }
     }
 }
