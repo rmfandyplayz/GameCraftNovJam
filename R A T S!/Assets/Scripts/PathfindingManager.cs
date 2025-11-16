@@ -194,7 +194,15 @@ public class PathfindingManager : MonoBehaviour
                 currentlySearching.state = SearchNodeState.Searched;
             }
 
-            currentlySearching = searchNodes.Where(n => n.state == SearchNodeState.ToSearch).OrderBy(n => n.cost).First();
+            var shitSearching = searchNodes.Where(n => n.state == SearchNodeState.ToSearch).OrderBy(n => n.cost);
+            if(shitSearching.Count() == 0)
+            {
+                var stack = new Stack<PathfindingNode>();
+                stack.Push(GetNearestNode(currentPos));
+                return stack;
+            }
+            currentlySearching = shitSearching.First();
+            
         }
 #if UNITY_EDITOR
         foreach (SearchNode node in searchNodes)
