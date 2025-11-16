@@ -300,7 +300,14 @@ public class Player : MonoBehaviour
     {
         if (!context.started)
             return;
-        heldObject?.Use(this);
+        if (heldObject is null)
+        {
+            TryPickup();
+        }
+        else
+        {
+            heldObject.Use(this);
+        }
     }
 
     public void GrabThrow()
@@ -310,22 +317,16 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (holdingItem)
-        {
-            Vector2 throwForce = faceDir * throwSpeed;
-            Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
-            heldObject.GetComponent<Collider2D>().isTrigger = false;
-            heldRB.bodyType = RigidbodyType2D.Dynamic;
-            heldRB.AddForce(throwForce);
-            pickupCooldown = 0;
+        if (!holdingItem) return;
+        Vector2 throwForce = faceDir * throwSpeed;
+        Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
+        heldObject.GetComponent<Collider2D>().isTrigger = false;
+        heldRB.bodyType = RigidbodyType2D.Dynamic;
+        heldRB.AddForce(throwForce);
+        pickupCooldown = 0;
 
-            heldObject = null;
-            itemRenderer = null;
-        }
-        else
-        {
-            TryPickup();
-        }
+        heldObject = null;
+        itemRenderer = null;
     }
 
     void TryPickup()
