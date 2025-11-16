@@ -71,7 +71,9 @@ public class PathfindingManager : MonoBehaviour
         {
             if (connection.dest == node || connection.source == node)
             {
-                connectionsToReturn.Add(connection);
+                if( Physics2D.Raycast(connection.dest.transform.position, connection.source.transform.position - connection.dest.transform.position,
+                       (connection.source.transform.position - connection.dest.transform.position).magnitude, raycastContactFilter).collider is null)
+                    connectionsToReturn.Add(connection);
             }
         }
 
@@ -84,6 +86,8 @@ public class PathfindingManager : MonoBehaviour
         {
             if ((connection.dest == nodeA && connection.source == nodeB) || (connection.source == nodeA && connection.dest == nodeB))
             {
+                if( Physics2D.Raycast(connection.dest.transform.position, connection.source.transform.position - connection.dest.transform.position,
+                       (connection.source.transform.position - connection.dest.transform.position).magnitude, raycastContactFilter).collider is null)
                 return connection;
             }
         }

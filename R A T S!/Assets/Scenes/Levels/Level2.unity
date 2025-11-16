@@ -647,8 +647,6 @@ MonoBehaviour:
   - source: {fileID: 800838789}
     dest: {fileID: 2086845420}
   - source: {fileID: 1888727974}
-    dest: {fileID: 329835167}
-  - source: {fileID: 1888727974}
     dest: {fileID: 800838789}
   - source: {fileID: 572961350}
     dest: {fileID: 111280895}
@@ -662,6 +660,8 @@ MonoBehaviour:
     dest: {fileID: 2086845420}
   - source: {fileID: 1749476926}
     dest: {fileID: 1807846073}
+  - source: {fileID: 1888727974}
+    dest: {fileID: 329835167}
   testCount: 40
   raycastContactFilter:
     serializedVersion: 2
@@ -10147,7 +10147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20075c3bb8a40294aa0893f33a8e5dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editor_otherNode: {fileID: 800838789}
+  editor_otherNode: {fileID: 329835167}
 --- !u!4 &1888727975
 Transform:
   m_ObjectHideFlags: 0
