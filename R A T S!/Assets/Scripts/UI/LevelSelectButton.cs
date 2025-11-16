@@ -10,7 +10,7 @@ public class LevelSelectButton : MonoBehaviour
 
     private bool isInteractable = true;
 
-    Button button;
+    [SerializeField] Button button;
 
     const float unAnimatedSize = 0.75f;
     const float scaleUpSize = 1.15f;
@@ -25,16 +25,25 @@ public class LevelSelectButton : MonoBehaviour
 
     public void AnimateOpening()
     {
+        button.image.DOFade(0, 0);
+        button.image.rectTransform.DOScale(unAnimatedSize, 0);
+
         button.image.DOFade(1, animationDuration);
-        button.image.rectTransform.DOScale(1, animationDuration).SetEase(Ease.OutBack);
-        EnableButtonInteractions();
+        button.image.rectTransform.DOScale(1, animationDuration).SetEase(Ease.OutBack).OnComplete(() =>
+        {
+            EnableButtonInteractions();
+        });
     }
 
     public void AnimateClosing()
     {
+        DOTween.Kill(button);
+
         button.image.DOFade(0, animationDuration);
-        button.image.rectTransform.DOScale(unAnimatedSize, animationDuration).SetEase(Ease.InBack);
-        DisableButtonInteractions();
+        button.image.rectTransform.DOScale(unAnimatedSize, animationDuration).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            DisableButtonInteractions();
+        });
     }
 
     public void OnPointerEnter()

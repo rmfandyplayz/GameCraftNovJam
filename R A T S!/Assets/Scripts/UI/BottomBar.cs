@@ -29,9 +29,9 @@ public class BottomBar : MonoBehaviour
     /// </summary>
     public void ActivateBottomBar()
     {
-        levelSelectButtonGroup.gameObject.SetActive(true);
+        levelSelectButtonGroup.gameObject.SetActive(true); 
         levelSelectButtonGroup.AnimateOpening();
-        bottomBarPos.DOAnchorPos(targetPos.anchoredPosition, 0.5f).SetEase(Ease.OutBack)
+        bottomBarPos.DOAnchorPos(targetPos.anchoredPosition, 0.75f).SetEase(Ease.OutBack)
             .OnComplete(() =>
             {
                 backButton.interactable = true;
@@ -45,7 +45,7 @@ public class BottomBar : MonoBehaviour
     {
         backButton.interactable = false;
         levelSelectButtonGroup.AnimateClosing();
-        bottomBarPos.DOAnchorPos(originalPos, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        bottomBarPos.DOAnchorPos(originalPos, 0.75f).SetEase(Ease.InBack).OnComplete(() =>
         {
             levelSelectButtonGroup.gameObject.SetActive(false);
             foreach(GenericMenuButton button in menuScript.GetTopLevelButtonsGenericVariant())

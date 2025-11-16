@@ -61,7 +61,6 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         playerSR = GetComponent<SpriteRenderer>();
         hand = transform.GetChild(0);
-        itemRenderer = GameObject.FindGameObjectWithTag("Item").transform.parent.GetComponent<SpriteRenderer>();
 
         lightLeft = maxLight;
         lightController = transform.Find("DisapperingLight").GetComponent<LightController>();
@@ -131,25 +130,29 @@ public class Player : MonoBehaviour
             {
                 animator.SetFloat("Idle Index", 2);
                 animator.SetFloat("Run Index", 0);
-                itemRenderer.sortingOrder = 4;
+                if(itemRenderer)
+                    itemRenderer.sortingOrder = playerSR.sortingOrder + 20;
             }
             else if (faceDir.y < 0)
             {
                 animator.SetFloat("Idle Index", 1);
                 animator.SetFloat("Run Index", 1);
-                itemRenderer.sortingOrder = 6;
+                if(itemRenderer)
+                    itemRenderer.sortingOrder = playerSR.sortingOrder + 20;
             }
             else if (faceDir.x > 0)
             {
                 animator.SetFloat("Idle Index", 3);
                 animator.SetFloat("Run Index", 3);
-                itemRenderer.sortingOrder = 4;
+                if(itemRenderer)
+                    itemRenderer.sortingOrder = playerSR.sortingOrder - 20;
             }
             else if (faceDir.x < 0)
             {
                 animator.SetFloat("Idle Index", 0);
                 animator.SetFloat("Run Index", 2);
-                itemRenderer.sortingOrder = 6;
+                if(itemRenderer)
+                    itemRenderer.sortingOrder = playerSR.sortingOrder + 20;
             }
         }
 
@@ -220,6 +223,7 @@ public class Player : MonoBehaviour
             pickupCooldown = 0;
 
             heldObject = null;
+            itemRenderer = null;
         }
         else
         {
@@ -257,6 +261,8 @@ public class Player : MonoBehaviour
         Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
         heldObject.GetComponent<Collider2D>().isTrigger = true;
         heldRB.bodyType = RigidbodyType2D.Kinematic;
+
+        itemRenderer = heldObject.GetComponent<SpriteRenderer>();
     }
 
     private void SpawnGhost()

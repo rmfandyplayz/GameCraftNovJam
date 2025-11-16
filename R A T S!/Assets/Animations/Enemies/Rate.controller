@@ -29,6 +29,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-8740050176040870711
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: zombieFrontMove
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 892276136adf0493cbc771b4486c1e3a, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-8242109604142319915
 AnimatorState:
   serializedVersion: 6
@@ -81,7 +107,11 @@ AnimatorStateMachine:
     m_Position: {x: 120, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8336442730709425033}
+<<<<<<< HEAD
     m_Position: {x: 630, y: 410, z: 0}
+=======
+    m_Position: {x: 240, y: 260, z: 0}
+>>>>>>> cb9b701f7db7ddd0a4da91e6fcc22623efe4c82c
   - serializedVersion: 1
     m_State: {fileID: 4461522027718413829}
     m_Position: {x: 610, y: 400, z: 0}
@@ -90,10 +120,26 @@ AnimatorStateMachine:
     m_Position: {x: 390, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6901229954126937018}
+<<<<<<< HEAD
     m_Position: {x: 400, y: 430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 582748329462499379}
     m_Position: {x: 340, y: 160, z: 0}
+=======
+    m_Position: {x: 340, y: 460, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1425189143961046619}
+    m_Position: {x: 380, y: 520, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -8740050176040870711}
+    m_Position: {x: 410, y: 590, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 440774748578709570}
+    m_Position: {x: 445, y: 655, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -2863852595719841448}
+    m_Position: {x: 480, y: 720, z: 0}
+>>>>>>> cb9b701f7db7ddd0a4da91e6fcc22623efe4c82c
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -316,6 +362,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-2863852595719841448
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ZombieSideMove
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 7224161accfe94aa18cdb87f1d89e03e, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-2854380710746762109
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -465,13 +537,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+<<<<<<< HEAD
 --- !u!1102 &582748329462499379
+=======
+--- !u!1102 &440774748578709570
+>>>>>>> cb9b701f7db7ddd0a4da91e6fcc22623efe4c82c
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: Shriek
   m_Speed: 1
   m_CycleOffset: 0
@@ -480,6 +557,12 @@ AnimatorState:
   - {fileID: 3453031366842426225}
   - {fileID: -3456428366730766507}
   - {fileID: -2025596156706565347}
+=======
+  m_Name: ZombieSideIdle
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+>>>>>>> cb9b701f7db7ddd0a4da91e6fcc22623efe4c82c
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -489,7 +572,37 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
+<<<<<<< HEAD
   m_Motion: {fileID: 7400000, guid: 5a12e8430115fc849a8e7a1038fc6618, type: 2}
+=======
+  m_Motion: {fileID: 7400000, guid: 29a1ff3c821d0437eaa4df38253f650b, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &1425189143961046619
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: zombieFrontIdle
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a37f15a282b494176a608e03a55bf165, type: 2}
+>>>>>>> cb9b701f7db7ddd0a4da91e6fcc22623efe4c82c
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
