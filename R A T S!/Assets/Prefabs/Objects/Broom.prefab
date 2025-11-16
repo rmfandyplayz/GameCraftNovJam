@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetPos: {x: 0, y: 0, z: 0}
   offsetRotation: 0
-  lethalVelocity: 1
+  lethalVelocity: 2
 --- !u!61 &959760670035278435
 BoxCollider2D:
   m_ObjectHideFlags: 0
