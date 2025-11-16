@@ -339,9 +339,7 @@ public class Player : MonoBehaviour
     }
     public void PlayStepSound()
     {
-    if (stepSound == null) return;
-    stepSound.Stop();
-    stepSound.Play();
+        stepSound.Play();
     }
     // Turn indicator child on/off for a given item
     private void SetPickupIndicator(GrabbableBase target, bool state)
