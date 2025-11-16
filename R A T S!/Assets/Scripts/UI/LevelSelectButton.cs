@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class LevelSelectButton : MonoBehaviour
 {
@@ -9,12 +10,32 @@ public class LevelSelectButton : MonoBehaviour
 
     private bool isInteractable = true;
 
-    [SerializeField] Button button;
+    Button button;
 
+    const float unAnimatedSize = 0.75f;
     const float scaleUpSize = 1.15f;
-    const float rippleEffectDistance = 25f;
-    const float animationDuration = 0.35f;
+    const float animationDuration = 0.2f;
     
+    void Start()
+    {
+        DisableButtonInteractions();
+        button.image.DOFade(0, 0);
+        button.image.rectTransform.DOScale(0.8f, 0);
+    }
+
+    public void AnimateOpening()
+    {
+        button.image.DOFade(1, animationDuration);
+        button.image.rectTransform.DOScale(1, animationDuration).SetEase(Ease.OutBack);
+        EnableButtonInteractions();
+    }
+
+    public void AnimateClosing()
+    {
+        button.image.DOFade(0, animationDuration);
+        button.image.rectTransform.DOScale(unAnimatedSize, animationDuration).SetEase(Ease.InBack);
+        DisableButtonInteractions();
+    }
 
     public void OnPointerEnter()
     {
@@ -38,7 +59,7 @@ public class LevelSelectButton : MonoBehaviour
 
     public void OnClick()
     {
-        
+        //TODO start scene transition sequence
     }
 
 

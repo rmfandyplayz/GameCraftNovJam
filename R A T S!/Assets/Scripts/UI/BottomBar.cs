@@ -8,8 +8,7 @@ public class BottomBar : MonoBehaviour
 {
     [SerializeField] Button backButton;
 
-    [SerializeField] GameObject levelSelectButtonGroup;
-    Button[] levelSelectButtons;
+    [SerializeField] LevelSelectButtonGroup levelSelectButtonGroup;
 
     RectTransform bottomBarPos;
 
@@ -21,13 +20,8 @@ public class BottomBar : MonoBehaviour
     private void Start()
     {
         backButton.interactable = false;
-        levelSelectButtons = levelSelectButtonGroup.GetComponentsInChildren<Button>();
         bottomBarPos = GetComponent<RectTransform>();
         originalPos = bottomBarPos.anchoredPosition;
-
-        Debug.Log("Original Pos: " + originalPos);
-        Debug.Log("Target Pos: " + targetPos.anchoredPosition);
-
     }
 
     /// <summary>
@@ -35,6 +29,8 @@ public class BottomBar : MonoBehaviour
     /// </summary>
     public void ActivateBottomBar()
     {
+        levelSelectButtonGroup.gameObject.SetActive(true);
+        levelSelectButtonGroup.AnimateOpening();
         bottomBarPos.DOAnchorPos(targetPos.anchoredPosition, 0.5f).SetEase(Ease.OutBack)
             .OnComplete(() =>
             {
@@ -48,8 +44,10 @@ public class BottomBar : MonoBehaviour
     public void DeactivateBottomBar()
     {
         backButton.interactable = false;
+        levelSelectButtonGroup.AnimateClosing();
         bottomBarPos.DOAnchorPos(originalPos, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
+            levelSelectButtonGroup.gameObject.SetActive(false);
             foreach(GenericMenuButton button in menuScript.GetTopLevelButtonsGenericVariant())
             {
                 button.TweenToOriginalPosition();
