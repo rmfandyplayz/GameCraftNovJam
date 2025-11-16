@@ -6,6 +6,7 @@ using UnityEditor.Rendering;
 
 public class BottomBar : MonoBehaviour
 {
+    private AudioSource[] sounds;
     [SerializeField] Button backButton;
 
     [SerializeField] LevelSelectButtonGroup levelSelectButtonGroup;
@@ -22,6 +23,7 @@ public class BottomBar : MonoBehaviour
         backButton.interactable = false;
         bottomBarPos = GetComponent<RectTransform>();
         originalPos = bottomBarPos.anchoredPosition;
+        sounds = backButton.GetComponentsInChildren<AudioSource>();
     }
 
     /// <summary>
@@ -43,6 +45,7 @@ public class BottomBar : MonoBehaviour
     /// </summary>
     public void DeactivateBottomBar()
     {
+        sounds[0].Play();
         backButton.interactable = false;
         levelSelectButtonGroup.AnimateClosing();
         bottomBarPos.DOAnchorPos(originalPos, 0.75f).SetEase(Ease.InBack).OnComplete(() =>
