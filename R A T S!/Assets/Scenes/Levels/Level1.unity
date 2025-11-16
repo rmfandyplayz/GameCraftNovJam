@@ -832,10 +832,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broom
       objectReference: {fileID: 0}
-    - target: {fileID: 3902226405941942176, guid: d4213f560c996384abb6a06a59e18d9b, type: 3}
-      propertyPath: lethalVelocity
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5753356100608906663, guid: d4213f560c996384abb6a06a59e18d9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.75
