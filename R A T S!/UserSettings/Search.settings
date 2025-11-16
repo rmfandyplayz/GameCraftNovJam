@@ -72,6 +72,8 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"t:Sprite jinput"
+	"t:Sprite jcontrol"
 	"t:AnimationClip zmbierun"
 	"t:AnimationClip shriker"
 	"t:AnimationClip runup"
