@@ -85,7 +85,10 @@ public class RatBase : MonoBehaviour
             overridePos = player.transform.position;
             if ((player.transform.position - transform.position).magnitude <= biteDistance)
             {
+                //player hurt
                 player.Damage(damage);
+                //slight shake when dealing damage
+                FindAnyObjectByType<PlayerCamera>().ShakeCamera(0.06f, 0.06f);
             }
         }
         else

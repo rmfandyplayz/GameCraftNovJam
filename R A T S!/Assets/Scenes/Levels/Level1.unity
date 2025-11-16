@@ -9290,7 +9290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ratPrefabs:
   - {fileID: 184846860718930128, guid: 02b5b89e4a368614b9d2db312a5d4723, type: 3}
-  spawnThreshold: 10
+  spawnThreshold: 15
   spawnDist: 12
 --- !u!4 &2058238289
 Transform:
