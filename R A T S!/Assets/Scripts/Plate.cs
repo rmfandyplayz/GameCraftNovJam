@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class Plate : GrabbableBase
@@ -129,6 +130,11 @@ public class Plate : GrabbableBase
             {
                 SetHintOnChildren(oven.transform, false);
             }
+
+            if (col.TryGetComponent<ServeTable>(out var table))
+            {
+                SetHintOnChildren(table.transform, false);
+            }
         }
 
         // 3) Second pass: enable hints only when the plate can actually interact.
@@ -155,6 +161,14 @@ public class Plate : GrabbableBase
                 {
                     SetHintOnChildren(oven.transform, true);
                     lastOvenWithHint = oven;   // remember which oven we lit up
+                }
+            }
+
+            if (col.TryGetComponent<ServeTable>(out var table))
+            {
+                if (foodItems.Count > 0 && foodItems.Peek().finalMeal)
+                {
+                    SetHintOnChildren(table.transform, true);
                 }
             }
         }

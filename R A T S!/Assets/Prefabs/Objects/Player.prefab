@@ -562,11 +562,10 @@ MonoBehaviour:
   heldObject: {fileID: 0}
   force: 10.5
   dashMultiplier: 4
-  stepSound: {fileID: 0}
-  maxLight: 100
+  stepSound: {fileID: 6573420833239739912}
+  maxLight: 110
   lightLeft: 0
-  lightDecayPerSecond: 2.5
-  deathVolume: {fileID: 0}
+  lightDecayPerSecond: 1
   throwSpeed: 1000
   dashTime: 0.13
   dashCooldownTime: 0.3

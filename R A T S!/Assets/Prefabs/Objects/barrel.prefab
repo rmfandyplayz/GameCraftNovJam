@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8406714068420189281}
   - component: {fileID: 4820081279030207137}
   - component: {fileID: 630275217973608282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: barrel
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -198,12 +198,21 @@ MonoBehaviour:
   Health: 1
   deathEffect: {fileID: 1584874861071363344, guid: 8bebbc89b7cdd416294c6c17be78a475, type: 3}
   iFrameDuration: 0.2
+  attack: {fileID: 0}
+  hurt: {fileID: 0}
   movingEnemy: 0
+  seeCollisionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  seeDistance: 0
   maxSpeed: 0
   accel: 0
   reachedDist: 0.01
+  biteDistance: 0
+  damage: 0
   maxStuckTime: 0
   maxStuckSpeed: 0
+  spriteRenderer: {fileID: 0}
 --- !u!50 &630275217973608282
 Rigidbody2D:
   serializedVersion: 5
