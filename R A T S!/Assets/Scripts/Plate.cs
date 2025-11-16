@@ -30,10 +30,15 @@ public class Plate : GrabbableBase
             {
                 foodItems.Push(item);
                 collider.enabled = false;
-            } else if (collider.GetComponent<Oven>() is { } oven)
+                return;
+            }
+
+            if (collider.GetComponent<Oven>() is { } oven)
             {
                 if (foodItems.Count == 0) return;
+                if (foodItems.Peek().finalMeal) return;
                 oven.StoreItem(foodItems.Pop());
+                return;
             }
         }
     }

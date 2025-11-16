@@ -15,6 +15,9 @@ public class Oven : MonoBehaviour
     private float brightnessTimer;
     private float lightBright;
 
+    private float cookinTimer;
+    [SerializeField] private float cookTime = 10;
+
 
     private void Start()
     {
@@ -35,6 +38,23 @@ public class Oven : MonoBehaviour
         brightSprite.color = new Color(1, 1, 1,
             brightnessTimer + randAmount);
         light.intensity = Mathf.Lerp(0, lightBright, brightnessTimer + randAmount);
+        
+        if (cookinTimer > 0)
+        {
+            cookinTimer += Time.deltaTime;
+            brightnessTimer = 1;
+            if (cookinTimer > cookTime)
+            {
+                transform.GetChild(1).gameObject.SetActive(true);
+                GetComponent<Animator>().SetTrigger("Spit");
+                cookinTimer = 0;
+            }
+        }
+    }
+
+    public void KillAnimator()
+    {
+        GetComponent<Animator>().enabled = false;
     }
 
     public void StoreItem(FoodItem item)
@@ -43,9 +63,9 @@ public class Oven : MonoBehaviour
         Destroy(item.gameObject);
         brightnessTimer = 1;
 
-        if (foodRequired.Count == 0)
+        if (foodRequired.Count == 1)
         {
-            Debug.Log("Time Tah Go!");
+            cookinTimer += Time.deltaTime;
         }
     }
 }
