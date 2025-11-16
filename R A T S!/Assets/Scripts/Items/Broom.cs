@@ -4,15 +4,19 @@ using UnityEngine;
 public class Broom : GrabbableBase
 {
     private Animator animator;
+    private Rigidbody2D rb;
+
+    [SerializeField] private float lethalVelocity;
 
     private float attackTimer;
     private const float attackTime = .6f;
 
-    private bool attacking => attackTimer > 0;
+    private bool attacking => attackTimer > 0 || rb.linearVelocity.magnitude > lethalVelocity;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
