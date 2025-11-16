@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class LevelSelectButton : MonoBehaviour
 {
@@ -68,9 +69,37 @@ public class LevelSelectButton : MonoBehaviour
 
     public void OnClick()
     {
-        //TODO start scene transition sequence
+        if(!isInteractable)
+            return;
+
+        Debug.Log("dfdf");
+
+        DOTween.Kill(button);
+
+        foreach (MonoBehaviour type in FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
+        {
+            if (type is GenericMenuButton genericButton)
+            {
+                genericButton.DisableButtonInteractions();
+            }
+        }
+
+        StartCoroutine(LevelSelectButtonAnimationSequence());
     }
 
+    IEnumerator LevelSelectButtonAnimationSequence()
+    {
+        var sequence = DOTween.Sequence();
+
+        sequence.Append(button.image.rectTransform.DOScale(scaleUpSize + .2f, animationDuration / 3).SetEase(Ease.OutQuint));
+        sequence.Append(button.image.rectTransform.DOScale(1, animationDuration).SetEase(Ease.OutQuad));
+
+        yield return new WaitForSeconds(animationDuration);
+
+        //TODO scene transition?
+
+        SceneManager.LoadScene(targetScene, LoadSceneMode.Single);
+    }
 
 
     public void DisableButtonInteractions()
