@@ -264,6 +264,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660be34c3a0ec904194c36d807a2b9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winScreens:
+  - {fileID: -8526077582138683106, guid: 9bdec924432d1e246918fbd20777e70c, type: 3}
+  - {fileID: -7058937712323988462, guid: 2bca589f84537b649a73bcc69061ae58, type: 3}
+  - {fileID: -7937308568894330335, guid: be579966d96d0024f9ee5dece3d0750c, type: 3}
+  - {fileID: 6435865782925604063, guid: 33fffee71c9348d46ad8650724d49bc3, type: 3}
+  - {fileID: -3342990183272907874, guid: 5e6892b8de1c11b439d2f291b871ed49, type: 3}
+  - {fileID: -8526077582138683106, guid: 9bdec924432d1e246918fbd20777e70c, type: 3}
+  - {fileID: -7058937712323988462, guid: 2bca589f84537b649a73bcc69061ae58, type: 3}
+  - {fileID: -7937308568894330335, guid: be579966d96d0024f9ee5dece3d0750c, type: 3}
+  - {fileID: 6435865782925604063, guid: 33fffee71c9348d46ad8650724d49bc3, type: 3}
+  - {fileID: -3342990183272907874, guid: 5e6892b8de1c11b439d2f291b871ed49, type: 3}
 --- !u!1 &351526067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1140,7 @@ GameObject:
   - component: {fileID: 1605169000}
   - component: {fileID: 1605168999}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1167,14 +1178,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38357356, g: 0.62352943, b: 0.2784314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -8526077582138683106, guid: 9bdec924432d1e246918fbd20777e70c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
