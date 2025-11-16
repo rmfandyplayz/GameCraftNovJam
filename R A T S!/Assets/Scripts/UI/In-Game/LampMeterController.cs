@@ -24,12 +24,11 @@ public class LampMeterController : MonoBehaviour
         lampSprite.sprite = fullLampSprite;
     }
 
-    public void DecreaseLampMeter(float decreaseAmount)
+    public void SetLampMeter(float newAmount)
     {
         float previousAmount = lampAmount;
 
-        lampAmount -= decreaseAmount;
-        lampAmount = Mathf.Clamp(lampAmount, 0f, 100f);
+        lampAmount = newAmount;
 
         if (lampAmount > 75)
             lampSprite.sprite = fullLampSprite;
@@ -43,7 +42,7 @@ public class LampMeterController : MonoBehaviour
             lampSprite.sprite = emptyLampSprite;
 
         DOTween.Kill(lampMeterText, true);
-
+        
         DOTween.To(
             () => previousAmount,
             value => lampMeterText.text = $"{value.ToString("0.0")}%", // 1 decimal place
