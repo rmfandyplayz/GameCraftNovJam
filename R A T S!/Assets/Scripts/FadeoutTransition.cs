@@ -4,8 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class FadeoutTransition : MonoBehaviour
 {
+
+    public static string lastSceneName;
     public static void SceneTransition(string sceneName)
     {
+        lastSceneName = SceneManager.GetActiveScene().name;
         GameObject prefab = Resources.Load("FadeoutTransition") as GameObject;
         GameObject instance = Instantiate(prefab);
         DontDestroyOnLoad(instance);
