@@ -8,6 +8,7 @@ TagManager:
   - Broom
   - Spawn Point
   - Enemy
+  - FoodObjective
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Player
   - PickupTrigger
   - Enemy
-  - 
+  - SolidImportant
   - 
   - 
   - 
