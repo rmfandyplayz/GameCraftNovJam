@@ -27,6 +27,8 @@ public class Oven : MonoBehaviour
 
     private Dictionary<FoodItem, GameObject> ingredients = new();
 
+    private bool hasLoaded = false;
+
     private void Start()
     {
         foodRequired = FindObjectsByType<FoodItem>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID).ToList();
@@ -57,10 +59,22 @@ public class Oven : MonoBehaviour
     }
 
     private const float brightFlicker = 0.05f;
-
+    private GlobalPlayerUI playerUI;
 
     private void Update()
     {
+        if (!hasLoaded)
+        {
+            hasLoaded = true;
+            playerUI = FindAnyObjectByType<GlobalPlayerUI>();
+            int i = 0;
+            foreach (FoodItem item in foodRequired.Where(item => !item.finalMeal))
+            {
+                playerUI.SetIngredient(i, item.spriteRenderer.sprite);
+                item.id = i;
+                i++;
+            }
+        }
         brightnessTimer = Mathf.Max(brightnessTimer - Time.deltaTime * .2f, -brightFlicker);
         float randAmount = Random.Range(-brightFlicker, brightFlicker);
         brightSprite.color = new Color(1, 1, 1,
@@ -87,6 +101,7 @@ public class Oven : MonoBehaviour
 
     public void StoreItem(FoodItem item)
     {
+        playerUI.CompleteIngredient(item.id);
         foodRequired.Remove(item);
         Destroy(ingredients[item]);
         Destroy(item.gameObject);

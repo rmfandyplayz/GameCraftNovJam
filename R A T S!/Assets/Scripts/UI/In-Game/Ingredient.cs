@@ -20,6 +20,8 @@ public class Ingredient : MonoBehaviour
 
     public void SetIngredient(Sprite ingredientSprite)
     {
+        this.ingredientSprite.color = Color.white;
+        transform.GetChild(0).GetComponent<Image>().color = Color.white;
         this.ingredientSprite.sprite = ingredientSprite;
     }
 

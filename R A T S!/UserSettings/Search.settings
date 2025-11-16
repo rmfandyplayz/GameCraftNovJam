@@ -72,6 +72,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"t:Sprite interact"
 	"t:Sprite retry"
 	"t:Sprite jinput"
 	"t:Sprite jcontrol"

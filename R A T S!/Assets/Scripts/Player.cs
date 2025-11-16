@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     private Volume dangerVolume;
 
     private SpriteRenderer lanternSprite;
+    private GlobalPlayerUI playerUI;
 
     void Start()
     {
@@ -80,6 +81,8 @@ public class Player : MonoBehaviour
         dangerVolume = transform.Find("DangerVolume").GetComponent<Volume>();
 
         lanternSprite = transform.Find("Lantern").GetChild(0).GetComponent<SpriteRenderer>();
+
+        playerUI = FindAnyObjectByType<GlobalPlayerUI>();
     }
 
     public void Damage(float amount)
@@ -287,9 +290,24 @@ public class Player : MonoBehaviour
         {
             ghostTimer = 0f; // reset when dash ends
         }
+        
+        playerUI.SetLampMeter((lightLeft / maxLight) * 100);
 
         // --- Pickup Candidate / Indicator ---
         UpdatePickupCandidate();
+    }
+
+    public void ViewRecipe(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            playerUI.OpenRecipeBook();
+            return;
+        }
+        if (context.canceled)
+        {
+            playerUI.CloseRecipeBook();
+        }
     }
 
     public int GetFacingIndex()

@@ -40,9 +40,9 @@ public class RecipeController : MonoBehaviour
         ingredientList[ingredientSpriteIndex].SetComplete();
     }
 
-    public void SetIngredient(int ingredientSpriteIndex, Ingredients ingredientID)
+    public void SetIngredient(int ingredientSpriteIndex, Sprite ingredientID)
     {
-        ingredientList[ingredientSpriteIndex].SetIngredient(GetIngredientImage(ingredientID));
+        ingredientList[ingredientSpriteIndex].SetIngredient(ingredientID);
     }
 
     Sprite GetIngredientImage(Ingredients ingredientID)
