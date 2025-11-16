@@ -40,6 +40,11 @@ public class Plate : GrabbableBase
                 oven.StoreItem(foodItems.Pop());
                 return;
             }
+
+            if (collider.GetComponent<ServeTable>() is { } table && foodItems.Peek().finalMeal)
+            {
+                table.PlaceItem(foodItems.Pop());
+            }
         }
     }
 
