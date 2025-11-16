@@ -6,9 +6,11 @@ public class FadeoutTransition : MonoBehaviour
 {
 
     public static string lastSceneName;
+    public static int lastSceneIndex;
     public static void SceneTransition(string sceneName)
     {
-        lastSceneName = SceneManager.GetActiveScene().name;
+        lastSceneName = SceneManager.GetActiveScene().path;
+        lastSceneIndex = SceneManager.GetActiveScene().buildIndex;
         GameObject prefab = Resources.Load("FadeoutTransition") as GameObject;
         GameObject instance = Instantiate(prefab);
         DontDestroyOnLoad(instance);

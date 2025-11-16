@@ -13,6 +13,9 @@ public class Broom : GrabbableBase
 
     private bool attacking => attackTimer > 0 || rb.linearVelocity.magnitude > lethalVelocity;
 
+    [Header("Sound Effects")]
+    public AudioSource attack;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -40,6 +43,7 @@ public class Broom : GrabbableBase
         if (attacking)
             return;
         animator.SetInteger("FaceDIr", player.GetFacingIndex());
+        attack.Play();
         animator.SetTrigger("Swing");
         attackTimer = attackTime;
     }

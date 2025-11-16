@@ -188,7 +188,10 @@ public class Player : MonoBehaviour
         }
 
         // --- Movement Animation Info ---
-        animator.SetBool("Moving", rb.linearVelocityX == 0 && rb.linearVelocityY == 0);
+        // --- Movement Animation Info ---
+    bool isMoving = rb.linearVelocityX != 0 || rb.linearVelocityY != 0;
+    animator.SetBool("Moving", isMoving);
+
 
         if (!dashing)
         {
