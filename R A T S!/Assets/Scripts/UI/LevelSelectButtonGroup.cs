@@ -22,7 +22,7 @@ public class LevelSelectButtonGroup : MonoBehaviour
         foreach(LevelSelectButton button in levelSelectButtons)
         {
             button.AnimateOpening();
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
