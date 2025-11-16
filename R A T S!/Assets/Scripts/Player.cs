@@ -86,14 +86,29 @@ public class Player : MonoBehaviour
         lightLeft -= amount;
     }
     
-    public void Dash()
-    {
-        if (dashOnCooldown)
-            return;
-        dashing = true;
-        dashOnCooldown = true;
-        rb.linearVelocity *= dashMultiplier;
-    }
+public void Dash()
+{
+    if (dashOnCooldown)
+        return;
+
+    dashing = true;
+    dashOnCooldown = true;
+
+    Vector2 dashDir;
+
+    if (movementInput.sqrMagnitude > 0.01f)
+        dashDir = movementInput;
+    else if (faceDir.sqrMagnitude > 0.01f)
+        dashDir = faceDir;
+    else
+        dashDir = Vector2.right; 
+
+    dashDir = dashDir.normalized;
+
+    // Actually set dash velocity
+    rb.linearVelocity = dashDir * force * dashMultiplier;
+}
+
 
     public void MoveInput(InputAction.CallbackContext context)
     {
