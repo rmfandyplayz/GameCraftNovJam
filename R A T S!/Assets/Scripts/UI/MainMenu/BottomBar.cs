@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
-using UnityEditor.Rendering;
 
 public class BottomBar : MonoBehaviour
 {

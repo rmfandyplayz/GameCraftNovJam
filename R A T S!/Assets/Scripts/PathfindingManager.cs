@@ -121,7 +121,7 @@ public class PathfindingManager : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     public Stack<PathfindingNode> PathfindTo(Vector3 currentPos, Vector3 goalPos)
     {
-        Handles.color = Color.white;
+        //Handles.color = Color.white;
         
         PathfindingNode destNode = GetNearestNode(goalPos);
         PathfindingNode startNearest = GetNearestNode(currentPos);
